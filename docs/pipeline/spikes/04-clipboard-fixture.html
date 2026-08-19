@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ru">
+  <meta charset="utf-8">
+  <title>Clipboard spike</title>
+  <label>Manifest URL <input id="manifest" readonly value="https://example.invalid/module.json"></label>
+  <button id="copy" type="button">Скопировать manifest</button>
+  <output id="status" aria-live="polite"></output>
+  <script>
+    copy.addEventListener("click", async () => {
+      try {
+        if (!isSecureContext || !navigator.clipboard?.writeText) throw new Error("Clipboard API недоступен");
+        await navigator.clipboard.writeText(manifest.value);
+        status.value = "Manifest-ссылка скопирована";
+      } catch (error) {
+        manifest.focus();
+        manifest.select();
+        status.value = "Не удалось скопировать. Ссылка выделена — скопируйте её вручную.";
+      }
+    });
+  </script>
+</html>

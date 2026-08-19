@@ -1,0 +1,212 @@
+[
+  {
+    "id": "ru-ru",
+    "title": "Russian Translation",
+    "description": "Переводит интерфейс Foundry Virtual Tabletop и поддерживаемые системы на русский. После установки включите модуль в мире и выберите язык в настройках.",
+    "category": "Локализация",
+    "systems": ["Несколько систем"],
+    "licenseType": "free",
+    "projectUrl": "https://github.com/phenomen/foundry-vtt-ru",
+    "dependencies": { "required": [], "recommended": [] },
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "13.351.54",
+        "installManifestUrl": "https://github.com/phenomen/foundry-vtt-ru/releases/download/release-v13/module.json",
+        "declaredManifestUrl": null,
+        "compatibility": { "minimum": "13", "verified": "13", "maximum": "13" },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Закреплённая ветка release-v13.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/ru-ru",
+          "releaseUrl": "https://github.com/phenomen/foundry-vtt-ru/releases/tag/release-v13",
+          "manifestUrl": "https://github.com/phenomen/foundry-vtt-ru/releases/download/release-v13/module.json"
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "14.366.1",
+        "installManifestUrl": "https://github.com/phenomen/foundry-vtt-ru/releases/download/release-v14/module.json",
+        "declaredManifestUrl": null,
+        "compatibility": { "minimum": "14", "verified": "14", "maximum": "14" },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Закреплённая ветка release-v14.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/ru-ru",
+          "releaseUrl": "https://github.com/phenomen/foundry-vtt-ru/releases/tag/release-v14",
+          "manifestUrl": "https://github.com/phenomen/foundry-vtt-ru/releases/download/release-v14/module.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "dice-calculator",
+    "title": "Dice Tray",
+    "description": "Добавляет под чатом панель кубов и калькулятор формул. Удобно, когда нужно быстро собрать бросок без ручного ввода команды.",
+    "category": "Кости и чат",
+    "systems": ["Любая система"],
+    "licenseType": "free",
+    "projectUrl": "https://github.com/mclemente/fvtt-dice-tray",
+    "dependencies": { "required": [], "recommended": ["Dice So Nice"] },
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "3.5.5",
+        "installManifestUrl": "https://github.com/mclemente/fvtt-dice-tray/releases/download/3.5.5/module.json",
+        "declaredManifestUrl": null,
+        "compatibility": { "minimum": "13", "verified": "13" },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Последний проверенный релиз ветки V13.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/dice-calculator",
+          "releaseUrl": "https://github.com/mclemente/fvtt-dice-tray/releases/tag/3.5.5",
+          "manifestUrl": "https://github.com/mclemente/fvtt-dice-tray/releases/download/3.5.5/module.json"
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "3.7.2",
+        "installManifestUrl": "https://github.com/mclemente/fvtt-dice-tray/releases/download/3.7.2/module.json",
+        "declaredManifestUrl": null,
+        "compatibility": { "minimum": "14", "verified": "14" },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Закреплённый релиз для V14.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/dice-calculator",
+          "releaseUrl": "https://github.com/mclemente/fvtt-dice-tray/releases/tag/3.7.2",
+          "manifestUrl": "https://github.com/mclemente/fvtt-dice-tray/releases/download/3.7.2/module.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "dae",
+    "title": "Dynamic Active Effects",
+    "description": "Расширяет Active Effects в dnd5e: связывает эффекты с предметами, бонусами и изменениями характеристик. Перед включением в старом мире сделайте резервную копию.",
+    "category": "Автоматизация",
+    "systems": ["dnd5e"],
+    "licenseType": "free",
+    "projectUrl": "https://gitlab.com/tposney/dae",
+    "dependencies": { "required": ["lib-wrapper", "socketlib"], "recommended": [] },
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "13.0.29",
+        "installManifestUrl": "https://gitlab.com/tposney/dae/-/releases/v13.0.29/downloads/module.json",
+        "declaredManifestUrl": null,
+        "compatibility": { "minimum": "13.0", "verified": "13.351", "maximum": "13.999" },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Manifest требует lib-wrapper и socketlib.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/dae",
+          "releaseUrl": "https://gitlab.com/tposney/dae/-/releases/v13.0.29",
+          "manifestUrl": "https://gitlab.com/tposney/dae/-/releases/v13.0.29/downloads/module.json"
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "14.0.12",
+        "installManifestUrl": "https://gitlab.com/tposney/dae/-/releases/v14.0.12/downloads/module.json",
+        "declaredManifestUrl": null,
+        "compatibility": { "minimum": "14", "verified": "14.356", "maximum": "14.999" },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Manifest требует lib-wrapper и socketlib.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/dae",
+          "releaseUrl": "https://gitlab.com/tposney/dae/-/releases/v14.0.12",
+          "manifestUrl": "https://gitlab.com/tposney/dae/-/releases/v14.0.12/downloads/module.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "lib-wrapper",
+    "title": "libWrapper",
+    "description": "Библиотека, через которую другие модули безопаснее изменяют методы Foundry Virtual Tabletop. Если модуль указывает libWrapper как зависимость, установите библиотеку первой.",
+    "category": "Базовые библиотеки",
+    "systems": ["Любая система"],
+    "licenseType": "free",
+    "projectUrl": "https://github.com/ruipin/fvtt-lib-wrapper",
+    "dependencies": { "required": [], "recommended": [] },
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "1.13.4.0",
+        "installManifestUrl": "https://github.com/ruipin/fvtt-lib-wrapper/releases/download/v1.13.4.0/module.json",
+        "declaredManifestUrl": "https://github.com/ruipin/fvtt-lib-wrapper/releases/latest/download/module.json",
+        "compatibility": { "minimum": "0.6.5", "verified": "13" },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Закреплённый релиз, проверенный автором на V13.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/lib-wrapper",
+          "releaseUrl": "https://github.com/ruipin/fvtt-lib-wrapper/releases/tag/v1.13.4.0",
+          "manifestUrl": "https://github.com/ruipin/fvtt-lib-wrapper/releases/download/v1.13.4.0/module.json"
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "1.13.5.1",
+        "installManifestUrl": "https://github.com/ruipin/fvtt-lib-wrapper/releases/download/v1.13.5.1/module.json",
+        "declaredManifestUrl": "https://github.com/ruipin/fvtt-lib-wrapper/releases/latest/download/module.json",
+        "compatibility": { "minimum": "0.6.5", "verified": "14" },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Закреплённый релиз, проверенный автором на V14.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/lib-wrapper",
+          "releaseUrl": "https://github.com/ruipin/fvtt-lib-wrapper/releases/tag/v1.13.5.1",
+          "manifestUrl": "https://github.com/ruipin/fvtt-lib-wrapper/releases/download/v1.13.5.1/module.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "jb2a_patreon",
+    "title": "JB2A Patreon Collection",
+    "description": "Расширенная библиотека анимаций JB2A для подписчиков. Ссылку на установку выдаёт сам автор после подтверждения доступа, поэтому публичного manifest здесь нет.",
+    "category": "Премиальные модули",
+    "systems": ["dnd5e", "Любая система"],
+    "licenseType": "premium",
+    "projectUrl": "https://www.patreon.com/JB2A/about",
+    "dependencies": { "required": [], "recommended": ["Sequencer"] },
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": null,
+        "installManifestUrl": null,
+        "declaredManifestUrl": null,
+        "compatibility": {},
+        "verificationStatus": "personal-premium-link",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Patreon выдаёт установочные данные только пользователю с доступом.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/JB2A_DnD5e",
+          "releaseUrl": "https://www.patreon.com/JB2A/about",
+          "manifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": null,
+        "installManifestUrl": null,
+        "declaredManifestUrl": null,
+        "compatibility": {},
+        "verificationStatus": "personal-premium-link",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Patreon выдаёт установочные данные только пользователю с доступом.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/JB2A_DnD5e",
+          "releaseUrl": "https://www.patreon.com/JB2A/about",
+          "manifestUrl": null
+        }
+      }
+    ]
+  }
+]
