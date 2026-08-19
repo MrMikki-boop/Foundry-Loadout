@@ -13,14 +13,13 @@ function resultLabel(count: number) {
   return `${count} модулей`;
 }
 
-function compatibilityLabel(track: ModuleTrack) {
+function compatibilityValue(track: ModuleTrack, field: keyof ModuleTrack["compatibility"]) {
+  return track.compatibility[field] ?? "не указано";
+}
+
+function hasCompatibility(track: ModuleTrack) {
   const { minimum, verified, maximum } = track.compatibility;
-  if (!minimum && !verified && !maximum) return `Уточните у автора для V${track.foundryMajor}`;
-  return [
-    `minimum: ${minimum ?? "не указан"}`,
-    `verified: ${verified ?? "не указан"}`,
-    `maximum: ${maximum ?? "не указан"}`,
-  ].join(" · ");
+  return Boolean(minimum || verified || maximum);
 }
 
 export function CatalogApp() {
@@ -167,13 +166,33 @@ export function CatalogApp() {
 
                 <p className="module-description">{entry.description}</p>
                 <dl className="facts">
-                  <div><dt>Foundry VTT {major}</dt><dd className="compatibility-value">{compatibilityLabel(track)}</dd></div>
+                  <div>
+                    <dt>Совместимость Foundry VTT из manifest</dt>
+                    {hasCompatibility(track) ? (
+                      <dd className="compatibility-value">
+                        <span><span>minimum</span><strong>{compatibilityValue(track, "minimum")}</strong></span>
+                        <span><span>verified</span><strong>{compatibilityValue(track, "verified")}</strong></span>
+                        <span><span>maximum</span><strong>{compatibilityValue(track, "maximum")}</strong></span>
+                      </dd>
+                    ) : <dd>Автор не указал публичный диапазон для V{track.foundryMajor}.</dd>}
+                  </div>
                   <div><dt>Системы</dt><dd>{entry.systems.join(", ")}</dd></div>
                   <div>
-                    <dt>Зависимости</dt>
+                    <dt>Дополнения и зависимости</dt>
                     <dd className="dependency-list">
                       <span>{entry.dependencies.required.length ? `Обязательные: ${entry.dependencies.required.join(", ")}` : "Обязательных нет"}</span>
                       {entry.dependencies.recommended.length ? <span>Рекомендуемые: {entry.dependencies.recommended.join(", ")}</span> : null}
+                      {entry.dependencies.required.length || entry.dependencies.recommended.length ? (
+                        <small>При установке Foundry VTT предложит добавить их вместе с модулем.</small>
+                      ) : null}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>Лицензия</dt>
+                    <dd>
+                      {entry.license.url ? (
+                        <a href={entry.license.url} target="_blank" rel="noreferrer noopener">{entry.license.name} <span aria-hidden="true">↗</span></a>
+                      ) : entry.license.name}
                     </dd>
                   </div>
                 </dl>
@@ -215,7 +234,7 @@ export function CatalogApp() {
         <div>
           <p className="eyebrow">Ручная установка</p>
           <h2 id="install-title">Куда вставить ссылку</h2>
-          <p>Сначала сделайте резервную копию мира. Сам модуль устанавливается в приложении Foundry, а включается уже внутри нужного мира.</p>
+          <p>Сначала сделайте резервную копию мира. Модуль устанавливается в Foundry VTT, а включается уже внутри нужного мира. Если manifest перечисляет зависимости, Foundry VTT предложит установить их заодно.</p>
         </div>
         <ol className="install-steps">
           <li><span>1</span><p>Нажмите <strong>Скопировать manifest</strong> в карточке модуля.</p></li>

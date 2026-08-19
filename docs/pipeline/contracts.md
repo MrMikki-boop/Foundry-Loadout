@@ -87,6 +87,10 @@ type ModuleEntry = {
   category: string;
   systems: string[];
   licenseType: "free" | "premium";
+  license: {
+    name: string;
+    url: `https://${string}` | null;
+  };
   projectUrl: `https://${string}`;
   dependencies: {
     required: string[];
@@ -100,13 +104,15 @@ type ModuleEntry = {
 
 Нельзя дорисовывать отсутствующий `compatibility.maximum`: `targetMajor` задаётся полем `foundryMajor`, а raw compatibility сохраняется без догадок.
 
+`license` описывает лицензию кода или контента, а `licenseType` только доступ: бесплатно или за плату. Если автор не опубликовал лицензию, карточка так и пишет; свободную лицензию нельзя предполагать по бесплатному доступу.
+
 ## Контракт трёх карточек вертикального среза
 
-| ID | V13 | V14 | Системы | Зависимости |
-|---|---|---|---|---|
-| `ru-ru` | `13.351.54`, pinned `release-v13` | `14.366.1`, pinned `release-v14` | Foundry VTT, переводы систем | — |
-| `dice-calculator` | `3.5.5`, pinned release | `3.7.2`, pinned release | system-agnostic | Dice So Nice — рекомендуемая |
-| `dae` | `13.0.29`, Foundry `13.0…13.999` | `14.0.12`, Foundry `14…14.999` | dnd5e | `lib-wrapper`, `socketlib` — обязательные |
+| ID | V13 | V14 | Системы | Зависимости из manifest | Лицензия |
+|---|---|---|---|---|---|
+| `ru-ru` | `13.351.54`, pinned `release-v13` | `14.366.1`, pinned `release-v14` | Foundry VTT, переводы систем | `lib-wrapper`, `babele` — рекомендуемые | не указана автором |
+| `dice-calculator` | `3.5.5`, pinned release | `3.7.2`, pinned release | system-agnostic | — | MIT |
+| `dae` | `13.0.29`, Foundry `13.0…13.999` | `14.0.12`, Foundry `14…14.999` | dnd5e | `lib-wrapper`, `socketlib` — обязательные | MIT |
 
 Для всех шести веток статус `verified`, дата проверки `2026-08-19`, а sources содержат официальный каталог, официальный релиз и manifest релиза. `latest` не используется как `installManifestUrl`.
 
@@ -163,6 +169,9 @@ const statusPresentation: Record<VerificationStatus, VerificationPresentation> =
 ```
 
 - В DOM присутствует только выбранный `track`; скрытая major-ветка не создаёт доступной кнопки копирования.
+- `minimum`, `verified` и `maximum` показываются отдельными raw-значениями из manifest. Отсутствующее поле получает подпись «не указано», а не вычисленное значение.
+- Required и recommended dependencies показываются как дополнения. Карточка объясняет, что Foundry VTT предложит установить объявленные зависимости вместе с модулем.
+- Карточка отдельно показывает название лицензии или честную пометку, что автор её публично не указал.
 - Статус передаётся текстом и оформлением, не одним цветом.
 - Premium `protected: true` — метаданные, не публичная установочная ссылка. Кнопки копирования нет.
 - Внешние ссылки используют `target="_blank"` и `rel="noreferrer noopener"`.
@@ -191,6 +200,7 @@ type ManifestSnapshot = {
   declaredManifestUrl: string | null;
   downloadUrl: string | null;
   requiredDependencies: string[];
+  recommendedDependencies: string[];
 };
 
 async function validateTrack(
@@ -207,7 +217,7 @@ async function validateTrack(
 3. Редиректы проходят вручную, не более трёх; redirect-host allowlist отделён от initial URL allowlist.
 4. Допустимые Content-Type: `application/json`, `text/json`, `text/plain`, `application/octet-stream`; после этого обязательны JSON parse и schema checks.
 5. Тело читается потоково до 256 KiB; на hop действует тайм-аут 8 секунд.
-6. Проверяются `id`, `title`, `version`, compatibility, `manifest`, `download`, `relationships.requires`, совпадение редакционной версии и включение выбранной major-версии.
+6. Проверяются `id`, `title`, `version`, compatibility, `manifest`, `download`, точное совпадение `relationships.requires` и `relationships.recommends`, совпадение редакционной версии и включение выбранной major-версии.
 7. Ошибка любой verified-ветки завершает `npm run validate:data` ненулевым кодом.
 
 ## Хранилище

@@ -74,3 +74,11 @@
       DoD: `git ls-files` содержит исходники и workflow, но не `.idea`, `.env*`, `node_modules`, `dist` и `out`; удалённые CI/check и Pages artifact завершаются успешно.
       Исполнитель: главный цикл
       Зависит от: T-06, T-07, T-08, T-09, разрешение пользователя
+
+- [x] T-11 — Показать честную совместимость, лицензии и установку зависимостей
+      Приоритет: пользовательская правка
+      Файлы: `data/modules.json`, `data/modules.ts`, `app/catalog-app.tsx`, `app/globals.css`, `scripts/validate-manifests.mjs`, `tests/*.mjs`, документация
+      Делаем: показываем raw `minimum/verified/maximum` без вычислений, добавляем отдельную лицензию и описываем required/recommended relationships как дополнения, которые Foundry VTT предлагает установить вместе с модулем.
+      DoD: отсутствующий `maximum` остаётся «не указано»; лицензия есть у каждой карточки; зависимости совпадают с официальными manifest; unit/SSR-тесты, TypeScript, lint, build и live validator проходят.
+      Исполнитель: главный цикл
+      Зависит от: T-05

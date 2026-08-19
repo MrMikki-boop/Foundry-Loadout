@@ -126,10 +126,16 @@ function validateSchema(entry, track, snapshot) {
   if (maximum !== null && maximum < track.foundryMajor) fail("schema:compatibility.maximum");
   if (verified !== track.foundryMajor) fail("schema:compatibility.verified");
 
-  const required = (data.relationships?.requires ?? []).map((item) => item.id).filter(Boolean);
-  for (const dependency of entry.dependencies.required) {
-    if (!required.includes(dependency)) fail("schema:relationships.requires", dependency);
-  }
+  const relationshipIds = (kind) => (data.relationships?.[kind] ?? []).map((item) => item.id).filter(Boolean).sort();
+  const assertRelationships = (kind, expected) => {
+    const actual = relationshipIds(kind);
+    const wanted = [...expected].sort();
+    if (actual.length !== wanted.length || actual.some((id, index) => id !== wanted[index])) {
+      fail(`schema:relationships.${kind}`, `expected ${wanted.join(",") || "none"}; got ${actual.join(",") || "none"}`);
+    }
+  };
+  assertRelationships("requires", entry.dependencies.required);
+  assertRelationships("recommends", entry.dependencies.recommended);
 }
 
 let failures = 0;

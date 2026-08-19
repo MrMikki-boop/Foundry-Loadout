@@ -34,6 +34,36 @@ test("verified install URLs are pinned HTTPS manifests", () => {
   }
 });
 
+test("catalog keeps declared licenses and manifest dependency relationships", () => {
+  const russian = catalog.find((entry) => entry.id === "ru-ru");
+  const diceTray = catalog.find((entry) => entry.id === "dice-calculator");
+  const dae = catalog.find((entry) => entry.id === "dae");
+  const libWrapper = catalog.find((entry) => entry.id === "lib-wrapper");
+
+  assert.deepEqual(russian.dependencies, { required: [], recommended: ["lib-wrapper", "babele"] });
+  assert.deepEqual(diceTray.dependencies, { required: [], recommended: [] });
+  assert.deepEqual(dae.dependencies, { required: ["lib-wrapper", "socketlib"], recommended: [] });
+  assert.deepEqual(diceTray.license, {
+    name: "MIT",
+    url: "https://github.com/mclemente/fvtt-dice-tray/blob/master/LICENSE",
+  });
+  assert.equal(libWrapper.license.name, "LGPL-3.0");
+  assert.equal(russian.license.name, "Не указана автором");
+  assert.equal(russian.license.url, null);
+  for (const entry of catalog) {
+    assert.equal(typeof entry.license.name, "string");
+    assert.ok(entry.license.name.length > 0);
+    if (entry.license.url !== null) assert.match(entry.license.url, /^https:\/\//);
+  }
+});
+
+test("compatibility values stay raw and missing maximum is not invented", () => {
+  const libWrapper = catalog.find((entry) => entry.id === "lib-wrapper");
+  const track13 = libWrapper.tracks.find((track) => track.foundryMajor === 13);
+  assert.deepEqual(track13.compatibility, { minimum: "0.6.5", verified: "13" });
+  assert.equal(Object.hasOwn(track13.compatibility, "maximum"), false);
+});
+
 test("premium personal-install tracks never expose a manifest URL", () => {
   const premium = catalog.find((entry) => entry.id === "jb2a_patreon");
   assert.equal(premium.licenseType, "premium");

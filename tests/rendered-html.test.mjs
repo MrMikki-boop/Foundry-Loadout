@@ -46,11 +46,16 @@ test("page exposes labelled search and catalog filters", async () => {
 test("verified cards render complete metadata and one copy action per manifest", async () => {
   const html = await (await render()).text();
   assert.match(html, /Бесплатный/);
-  assert.match(html, /minimum: 14/);
-  assert.match(html, /verified: 14/);
-  assert.match(html, /maximum: 14/);
+  assert.match(html, /Совместимость Foundry VTT из manifest/);
+  assert.match(html, /minimum<\/span><strong>0\.6\.5<\/strong>/);
+  assert.match(html, /verified<\/span><strong>14<\/strong>/);
+  assert.match(html, /maximum<\/span><strong>не указано<\/strong>/);
   assert.match(html, /Обязательные: lib-wrapper, socketlib/);
-  assert.match(html, /Рекомендуемые: (?:<!-- -->)?Dice So Nice/);
+  assert.match(html, /Рекомендуемые: (?:<!-- -->)?lib-wrapper, babele/);
+  assert.match(html, /Foundry VTT предложит добавить их вместе с модулем/);
+  assert.match(html, />MIT(?:<!-- -->)? <span aria-hidden="true">↗<\/span><\/a>/);
+  assert.match(html, />LGPL-3\.0(?:<!-- -->)? <span aria-hidden="true">↗<\/span><\/a>/);
+  assert.match(html, /Не указана автором/);
   assert.equal((html.match(/>Скопировать manifest<\/button>/g) ?? []).length, 4);
   assert.equal((html.match(/class="manifest-url"/g) ?? []).length, 4);
   assert.doesNotMatch(html, /Публичная ссылка недоступна/);

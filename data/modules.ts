@@ -43,6 +43,10 @@ export type ModuleEntry = {
   category: string;
   systems: string[];
   licenseType: "free" | "premium";
+  license: {
+    name: string;
+    url: `https://${string}` | null;
+  };
   projectUrl: `https://${string}`;
   dependencies: { required: string[]; recommended: string[] };
   tracks: ModuleTrack[];
