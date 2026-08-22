@@ -12,7 +12,7 @@
     "preview:pages": "node scripts/serve-pages.mjs",
     "start": "vinext start",
     "validate:data": "node scripts/validate-manifests.mjs",
-    "test:catalog": "node --test tests/catalog.test.mjs",
+    "test:catalog": "node --test tests/catalog.test.mjs tests/validator-security.test.mjs",
     "test:pages": "node --test tests/pages-export.test.mjs",
     "test": "npm run test:catalog && npm run build && node --test tests/rendered-html.test.mjs",
     "check": "npm run lint && npx tsc --noEmit && npm run test:catalog && npm run build:pages && node --test tests/rendered-html.test.mjs tests/pages-export.test.mjs",

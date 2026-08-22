@@ -14,10 +14,12 @@ export type VerificationStatus =
   | "no-public-manifest"
   | "personal-premium-link";
 
+export type CompatibilityValue = string | number;
+
 export type Compatibility = {
-  minimum?: string;
-  verified?: string;
-  maximum?: string;
+  minimum?: CompatibilityValue;
+  verified?: CompatibilityValue;
+  maximum?: CompatibilityValue;
 };
 
 export type ModuleTrack = {
@@ -26,13 +28,19 @@ export type ModuleTrack = {
   installManifestUrl: `https://${string}` | null;
   declaredManifestUrl: `https://${string}` | null;
   compatibility: Compatibility;
+  relationships: {
+    systems: string[];
+    required: string[];
+    recommended: string[];
+  };
   verificationStatus: VerificationStatus;
   verifiedAt?: string;
   verificationNotes?: string;
   sources: {
-    catalogUrl: `https://${string}`;
-    releaseUrl: `https://${string}`;
+    catalogUrl: `https://${string}` | null;
+    releaseUrl: `https://${string}` | null;
     manifestUrl: `https://${string}` | null;
+    metadataManifestUrl: `https://${string}` | null;
   };
 };
 
@@ -41,14 +49,12 @@ export type ModuleEntry = {
   title: string;
   description: string;
   category: string;
-  systems: string[];
   licenseType: "free" | "premium";
   license: {
     name: string;
     url: `https://${string}` | null;
   };
   projectUrl: `https://${string}`;
-  dependencies: { required: string[]; recommended: string[] };
   tracks: ModuleTrack[];
 };
 

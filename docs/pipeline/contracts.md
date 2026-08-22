@@ -33,12 +33,14 @@ app/
   catalog-app.tsx        # клиентское состояние версии и Clipboard API
   globals.css            # токены и компоненты из design-system/MASTER.md
 data/
-  modules.json           # три редакционные карточки, источник данных для UI и валидатора
+  modules.json           # редакционный каталог, источник данных для UI и валидатора
   modules.ts             # типизированная обёртка и функции выборки
 scripts/
-  validate-manifests.mjs # build-time/CI validator
+  manifest-validator.mjs # тестируемое ядро сетевой проверки
+  validate-manifests.mjs # build-time/CI entrypoint
 tests/
   catalog.test.mjs       # схема, ветки, URL, отсутствие bulk-сценариев
+  validator-security.test.mjs # негативные SSRF/network fixtures без сети
 .openai/hosting.json
 ```
 
@@ -55,16 +57,25 @@ type VerificationStatus =
   | "no-public-manifest"
   | "personal-premium-link";
 
+type CompatibilityValue = string | number;
+
 type Compatibility = {
-  minimum?: string;
-  verified?: string;
-  maximum?: string;
+  minimum?: CompatibilityValue;
+  verified?: CompatibilityValue;
+  maximum?: CompatibilityValue;
 };
 
 type VerificationSources = {
-  catalogUrl: `https://${string}`;
-  releaseUrl: `https://${string}`;
+  catalogUrl: `https://${string}` | null;
+  releaseUrl: `https://${string}` | null;
   manifestUrl: `https://${string}` | null;
+  metadataManifestUrl: `https://${string}` | null;
+};
+
+type TrackRelationships = {
+  systems: string[];
+  required: string[];
+  recommended: string[];
 };
 
 type ModuleTrack = {
@@ -72,8 +83,8 @@ type ModuleTrack = {
   moduleVersion: string | null;
   installManifestUrl: `https://${string}` | null;
   declaredManifestUrl: `https://${string}` | null;
-  finalManifestUrl?: `https://${string}`;
   compatibility: Compatibility;
+  relationships: TrackRelationships;
   verificationStatus: VerificationStatus;
   verifiedAt?: `${number}-${number}-${number}`;
   verificationNotes?: string;
@@ -85,24 +96,25 @@ type ModuleEntry = {
   title: string;
   description: string;
   category: string;
-  systems: string[];
   licenseType: "free" | "premium";
   license: {
     name: string;
     url: `https://${string}` | null;
   };
   projectUrl: `https://${string}`;
-  dependencies: {
-    required: string[];
-    recommended: string[];
-  };
   tracks: ModuleTrack[];
 };
 ```
 
 `installManifestUrl` — единственное значение, которое разрешено копировать. `declaredManifestUrl` — update URL внутри manifest; он хранится для аудита и не подменяет закреплённую установочную ссылку.
 
+`sources.manifestUrl` — именно проверенный публичный manifest обычного релиза. `sources.metadataManifestUrl` — официальный versioned protected manifest: он доказывает metadata premium-пакета, но никогда не становится install URL. Для недоказанной или отсутствующей ветки source URL, которого нет, остаётся `null`; поле не заполняется догадкой.
+
+Системы и зависимости принадлежат track, потому что разные major-релизы одного модуля могут объявлять разный набор relationships. Пустой `relationships.systems` означает system-agnostic модуль и показывается в UI как «Любая система». Фильтр системы читает только выбранный track: конкретная система совпадает по manifest ID, а отдельный вариант «Любая система» выбирает пустой массив.
+
 Нельзя дорисовывать отсутствующий `compatibility.maximum`: `targetMajor` задаётся полем `foundryMajor`, а raw compatibility сохраняется без догадок.
+
+`compatibility.verified` показывает последнюю версию, на которой автор проверял пакет, но не задаёт верхнюю границу. Валидатор допускает major, если она не ниже `minimum` и не выше `maximum`; отсутствующая граница считается открытой. Поэтому один и тот же versioned manifest может честно обслуживать V13 и V14.
 
 `license` описывает лицензию кода или контента, а `licenseType` только доступ: бесплатно или за плату. Если автор не опубликовал лицензию, карточка так и пишет; свободную лицензию нельзя предполагать по бесплатному доступу.
 
@@ -116,7 +128,9 @@ type ModuleEntry = {
 
 Для всех шести веток статус `verified`, дата проверки `2026-08-19`, а sources содержат официальный каталог, официальный релиз и manifest релиза. `latest` не используется как `installManifestUrl`.
 
-## Публичные функции интерфейса
+Этот раздел фиксирует исходный вертикальный срез. Полный каталог следует общей модели выше: systems и dependencies хранятся в каждом track, а карточка содержит ровно по одному track для V13 и V14, включая честные состояния отсутствия.
+
+## Публичные функции каталога
 
 ```ts
 function getTrack(entry: ModuleEntry, major: FoundryMajor): ModuleTrack | null;
@@ -133,17 +147,9 @@ function filterCatalog(
   },
 ): Array<{ entry: ModuleEntry; track: ModuleTrack }>;
 
-type CopyResult =
-  | { status: "copied"; message: "Manifest-ссылка скопирована" }
-  | { status: "manual"; message: "Выделите ссылку и скопируйте её вручную" };
-
-async function copyManifest(
-  track: ModuleTrack,
-  clipboard: Pick<Clipboard, "writeText"> | undefined,
-): Promise<CopyResult>;
 ```
 
-`copyManifest` вызывается только по явному нажатию. При отсутствии API или rejected Promise функция возвращает `manual`; видимый readonly URL остаётся в DOM и получает выделение/focus.
+Копирование — внутренний обработчик `CatalogApp`, не публичный API проекта. Он вызывается только по явному нажатию, передаёт Clipboard API URL выбранной карточки, а при отсутствии API или rejected Promise фокусирует и выделяет видимый readonly URL.
 
 ## Контракт отображения
 
@@ -161,7 +167,7 @@ const statusPresentation: Record<VerificationStatus, VerificationPresentation> =
   unavailable: { label: "Ссылка недоступна", tone: "danger", canCopy: false },
   "no-public-manifest": { label: "Нет публичного manifest", tone: "neutral", canCopy: false },
   "personal-premium-link": {
-    label: "Премиальный — персональная установка",
+    label: "Премиальный: персональная установка",
     tone: "neutral",
     canCopy: false,
   },
@@ -169,11 +175,12 @@ const statusPresentation: Record<VerificationStatus, VerificationPresentation> =
 ```
 
 - В DOM присутствует только выбранный `track`; скрытая major-ветка не создаёт доступной кнопки копирования.
-- `minimum`, `verified` и `maximum` показываются отдельными raw-значениями из manifest. Отсутствующее поле получает подпись «не указано», а не вычисленное значение.
-- Required и recommended dependencies показываются как дополнения. Карточка объясняет, что Foundry VTT предложит установить объявленные зависимости вместе с модулем.
+- `minimum`, `verified` и `maximum` показываются одной компактной моноширинной строкой с raw-значениями из manifest. Отсутствующее поле получает подпись «не указано», а не вычисленное значение.
+- Required и recommended dependencies выбранного track показываются как дополнения. Карточка объясняет, что Foundry VTT предложит установить объявленные зависимости вместе с модулем.
 - Карточка отдельно показывает название лицензии или честную пометку, что автор её публично не указал.
 - Статус передаётся текстом и оформлением, не одним цветом.
-- Premium `protected: true` — метаданные, не публичная установочная ссылка. Кнопки копирования нет.
+- Для premium-карточки `installManifestUrl` и `declaredManifestUrl` равны `null`. Официальный versioned protected manifest допускается только в `sources.metadataManifestUrl`; `sources.manifestUrl` остаётся `null`, кнопки копирования нет.
+- `verified` — единственный статус, разрешающий копирование. `unavailable`, `no-public-manifest` и `personal-premium-link` всегда имеют `installManifestUrl: null`.
 - Внешние ссылки используют `target="_blank"` и `rel="noreferrer noopener"`.
 - Описания — обычный текст; HTML из manifest не рендерится.
 - На странице нет сборки, корзины, bulk copy, очереди или экспорта.
@@ -199,15 +206,29 @@ type ManifestSnapshot = {
   compatibility: Compatibility;
   declaredManifestUrl: string | null;
   downloadUrl: string | null;
+  systems: string[];
   requiredDependencies: string[];
   recommendedDependencies: string[];
+};
+
+type ValidatorOptions = {
+  limits?: Partial<ValidationLimits>;
+  allowedInitialUrls?: ReadonlySet<string>;
+  allowedRedirectHosts?: ReadonlySet<string>;
+  fetchFn?: typeof fetch;
+  lookupFn?: typeof import("node:dns/promises").lookup;
 };
 
 async function validateTrack(
   entry: ModuleEntry,
   track: ModuleTrack,
-  limits?: ValidationLimits,
+  options?: ValidatorOptions,
 ): Promise<ManifestSnapshot>;
+
+function buildValidationPlan(entries: readonly ModuleEntry[]): {
+  tracks: Array<{ entry: ModuleEntry; track: ModuleTrack }>;
+  allowedInitialUrls: ReadonlySet<string>;
+};
 ```
 
 Инварианты:
@@ -217,8 +238,9 @@ async function validateTrack(
 3. Редиректы проходят вручную, не более трёх; redirect-host allowlist отделён от initial URL allowlist.
 4. Допустимые Content-Type: `application/json`, `text/json`, `text/plain`, `application/octet-stream`; после этого обязательны JSON parse и schema checks.
 5. Тело читается потоково до 256 KiB; на hop действует тайм-аут 8 секунд.
-6. Проверяются `id`, `title`, `version`, compatibility, `manifest`, `download`, точное совпадение `relationships.requires` и `relationships.recommends`, совпадение редакционной версии и включение выбранной major-версии.
+6. Проверяются `id`, `title`, `version`, compatibility, `manifest`, `download`, точное совпадение `systems`, `relationships.requires` и `relationships.recommends` выбранного track, совпадение редакционной версии и попадание major в границы `minimum`/`maximum`. Raw `verified` парсится, но не используется как верхняя граница.
 7. Ошибка любой verified-ветки завершает `npm run validate:data` ненулевым кодом.
+8. Валидатор сети обходит только `verified` tracks. Protected metadata проверяется отдельной редакционной процедурой и никогда не попадает в allowlist копируемых install URL.
 
 ## Хранилище
 
@@ -253,6 +275,7 @@ async function validateTrack(
 | `http:<status>` | HTTP не 2xx | CLI падает |
 | `content-type:<type>` | MIME вне allowlist | CLI падает |
 | `size:limit` | manifest больше 256 KiB | CLI падает |
+| `timeout:hop` | один сетевой hop превысил 8 секунд | CLI падает |
 | `json:invalid` | ответ не JSON | CLI падает |
 | `schema:<field>` | поле отсутствует/не совпало | CLI падает с именем поля |
 | `clipboard:unavailable` | Clipboard API отсутствует/отказал | UI выделяет видимый URL и предлагает ручное копирование |

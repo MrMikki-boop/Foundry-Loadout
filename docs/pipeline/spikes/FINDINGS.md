@@ -154,3 +154,46 @@ Guide просит не сокращать название ПО до `Foundry`,
 - Статическая архитектура сохраняется; реальный Sites build остаётся доказать вертикальным срезом.
 - Валидатор остаётся build-time/CI-инструментом над version-controlled allowlist.
 - Публичный релиз под именем `Foundry Loadout` заблокирован до переименования или письменного разрешения.
+
+## Цикл наполнения каталога — S-08…S-11
+
+### S-08 — Базовый набор и боевой интерфейс
+
+Проверены 10 кандидатов и 20 major-треков. Первичный прогон подтвердил 18 обычных pinned manifest. Отдельный S-11 уточнил Hover Distance, поэтому итог S-08 после коррекции: 18 `verified` и 2 `personal-premium-link` с защищёнными metadata-manifest. Все остальные карточки имеют официальный catalog URL, официальный релиз и versioned install manifest; `latest` не используется как install URL.
+
+Важные детали: один релиз может честно обслуживать обе major-версии, если это прямо подтверждают каталог и raw compatibility. Так работает Monk’s TokenBar 13.02 (`13+`). У Quick Insert каталог и manifest дают разные значения verified (`14.364` и `14.361`), поэтому production сохраняет raw manifest, а значение каталога остаётся только доказательством.
+
+Артефакты: `08-catalog-core.mjs`, `08-catalog-core.json`, `08-catalog-core.md`; корректировка Hover — S-11.
+
+### S-09 — Автоматизация D&D5e и анимации
+
+Проверены 9 кандидатов и 18 tracks: 15 `verified`, 1 `no-public-manifest`, 2 `unavailable`.
+
+- Times Up V13: официальный tag `v13.1.9` существует, но вложенный manifest объявляет версию `13.1.8`; mutable branch URL не принимается как install URL.
+- Times Up V14: официальный каталог не публикует совместимую V14-ветку.
+- Active Auras V14: публичного V14-релиза нет, последний manifest ограничен Foundry 13.
+
+Артефакты: `09-catalog-automation.mjs`, `09-catalog-automation.json`, `09-catalog-automation.md`.
+
+### S-10 — Медиа, сцены и переводы
+
+Проверены 9 кандидатов и 18 tracks: 16 `verified`, 2 `unavailable`. AG D&D Hub не имеет рабочей официальной карточки каталога: canonical URL отвечает 404, а доступен только mutable `main/module.json`, поэтому обе ветки остаются без install URL.
+
+У Levels состав зависимостей различается по major-веткам: V13 требует `lib-wrapper` и `wall-height`, а V14 — только `lib-wrapper`. Это доказывает, что systems и relationships должны жить на track, а не в общей части карточки.
+
+Артефакты: `10-catalog-media.mjs`, `10-catalog-media.json`, `10-catalog-media.md`.
+
+### S-11 — Hover Distance: protected metadata
+
+Официальные versioned metadata-manifest V13 `5.0.1` и V14 `6.0.1` отвечают HTTP 200. Оба имеют `protected: true`, не содержат `download` и требуют `lib-wrapper`. Они доказывают версии и raw compatibility, но не являются общедоступными install URL.
+
+S-11 заменяет два статуса `no-public-manifest` из S-08 на `personal-premium-link`: `metadataManifestUrl` сохраняется как источник аудита, а `installManifestUrl` остаётся `null`.
+
+Артефакты: `11-hover-protected.mjs`, `11-hover-protected.json`, `11-hover-protected.md`.
+
+## Итог стадии 3 текущего цикла
+
+- Все 28 новых кандидатов получили evidence matrix: 49 обычных verified tracks, 2 защищённых premium tracks, 1 `no-public-manifest` и 4 `unavailable`.
+- Вместе с четырьмя уже существующими публичными карточками покрыты все 32 кандидата пользовательского инвентаря без дубликатов.
+- Неподтверждённые, mutable, токенизированные и персональные URL не допускаются в `installManifestUrl`.
+- Контракт стадии 4 должен перенести systems и relationships на track, разрешить строковые и числовые raw compatibility и отделить `metadataManifestUrl` от копируемого install URL.

@@ -18,13 +18,14 @@ export function filterCatalog(entries, filters) {
   return entries.flatMap((entry) => {
     const track = getTrack(entry, filters.major);
     if (!track) return [];
-    const searchable = [entry.title, entry.id, entry.description, entry.category, ...entry.systems]
+    const searchable = [entry.title, entry.id, entry.description, entry.category, ...track.relationships.systems]
       .join(" ")
       .toLocaleLowerCase("ru");
     if (query && !searchable.includes(query)) return [];
     if (filters.category && entry.category !== filters.category) return [];
     if (filters.licenseType !== "all" && entry.licenseType !== filters.licenseType) return [];
-    if (filters.system && !entry.systems.includes(filters.system)) return [];
+    if (filters.system === "__system-agnostic__" && track.relationships.systems.length) return [];
+    if (filters.system && filters.system !== "__system-agnostic__" && !track.relationships.systems.includes(filters.system)) return [];
     if (filters.verifiedOnly && track.verificationStatus !== "verified") return [];
     return [{ entry, track }];
   });

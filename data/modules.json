@@ -4,40 +4,67 @@
     "title": "Russian Translation",
     "description": "Переводит интерфейс Foundry Virtual Tabletop и поддерживаемые системы на русский. После установки включите модуль в мире и выберите язык в настройках.",
     "category": "Локализация",
-    "systems": ["Несколько систем"],
     "licenseType": "free",
-    "license": { "name": "Не указана автором", "url": null },
+    "license": {
+      "name": "Не указана автором",
+      "url": null
+    },
     "projectUrl": "https://github.com/phenomen/foundry-vtt-ru",
-    "dependencies": { "required": [], "recommended": ["lib-wrapper", "babele"] },
     "tracks": [
       {
         "foundryMajor": 13,
         "moduleVersion": "13.351.54",
         "installManifestUrl": "https://github.com/phenomen/foundry-vtt-ru/releases/download/release-v13/module.json",
         "declaredManifestUrl": null,
-        "compatibility": { "minimum": "13", "verified": "13", "maximum": "13" },
+        "compatibility": {
+          "minimum": "13",
+          "verified": "13",
+          "maximum": "13"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": [
+            "lib-wrapper",
+            "babele"
+          ]
+        },
         "verificationStatus": "verified",
         "verifiedAt": "2026-08-19",
         "verificationNotes": "Закреплённая ветка release-v13.",
         "sources": {
           "catalogUrl": "https://foundryvtt.com/packages/ru-ru",
           "releaseUrl": "https://github.com/phenomen/foundry-vtt-ru/releases/tag/release-v13",
-          "manifestUrl": "https://github.com/phenomen/foundry-vtt-ru/releases/download/release-v13/module.json"
+          "manifestUrl": "https://github.com/phenomen/foundry-vtt-ru/releases/download/release-v13/module.json",
+          "metadataManifestUrl": null
         }
       },
       {
         "foundryMajor": 14,
-        "moduleVersion": "14.366.1",
+        "moduleVersion": "14.366.4",
         "installManifestUrl": "https://github.com/phenomen/foundry-vtt-ru/releases/download/release-v14/module.json",
         "declaredManifestUrl": null,
-        "compatibility": { "minimum": "14", "verified": "14", "maximum": "14" },
+        "compatibility": {
+          "minimum": "14",
+          "verified": "14",
+          "maximum": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": [
+            "lib-wrapper",
+            "babele"
+          ]
+        },
         "verificationStatus": "verified",
         "verifiedAt": "2026-08-19",
         "verificationNotes": "Закреплённая ветка release-v14.",
         "sources": {
           "catalogUrl": "https://foundryvtt.com/packages/ru-ru",
           "releaseUrl": "https://github.com/phenomen/foundry-vtt-ru/releases/tag/release-v14",
-          "manifestUrl": "https://github.com/phenomen/foundry-vtt-ru/releases/download/release-v14/module.json"
+          "manifestUrl": "https://github.com/phenomen/foundry-vtt-ru/releases/download/release-v14/module.json",
+          "metadataManifestUrl": null
         }
       }
     ]
@@ -47,25 +74,35 @@
     "title": "Dice Tray",
     "description": "Добавляет под чатом панель кубов и калькулятор формул. Удобно, когда нужно быстро собрать бросок без ручного ввода команды.",
     "category": "Кости и чат",
-    "systems": ["Любая система"],
     "licenseType": "free",
-    "license": { "name": "MIT", "url": "https://github.com/mclemente/fvtt-dice-tray/blob/master/LICENSE" },
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/mclemente/fvtt-dice-tray/blob/master/LICENSE"
+    },
     "projectUrl": "https://github.com/mclemente/fvtt-dice-tray",
-    "dependencies": { "required": [], "recommended": [] },
     "tracks": [
       {
         "foundryMajor": 13,
         "moduleVersion": "3.5.5",
         "installManifestUrl": "https://github.com/mclemente/fvtt-dice-tray/releases/download/3.5.5/module.json",
         "declaredManifestUrl": null,
-        "compatibility": { "minimum": "13", "verified": "13" },
+        "compatibility": {
+          "minimum": "13",
+          "verified": "13"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
         "verificationStatus": "verified",
         "verifiedAt": "2026-08-19",
         "verificationNotes": "Последний проверенный релиз ветки V13.",
         "sources": {
           "catalogUrl": "https://foundryvtt.com/packages/dice-calculator",
           "releaseUrl": "https://github.com/mclemente/fvtt-dice-tray/releases/tag/3.5.5",
-          "manifestUrl": "https://github.com/mclemente/fvtt-dice-tray/releases/download/3.5.5/module.json"
+          "manifestUrl": "https://github.com/mclemente/fvtt-dice-tray/releases/download/3.5.5/module.json",
+          "metadataManifestUrl": null
         }
       },
       {
@@ -73,14 +110,23 @@
         "moduleVersion": "3.7.2",
         "installManifestUrl": "https://github.com/mclemente/fvtt-dice-tray/releases/download/3.7.2/module.json",
         "declaredManifestUrl": null,
-        "compatibility": { "minimum": "14", "verified": "14" },
+        "compatibility": {
+          "minimum": "14",
+          "verified": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
         "verificationStatus": "verified",
         "verifiedAt": "2026-08-19",
         "verificationNotes": "Закреплённый релиз для V14.",
         "sources": {
           "catalogUrl": "https://foundryvtt.com/packages/dice-calculator",
           "releaseUrl": "https://github.com/mclemente/fvtt-dice-tray/releases/tag/3.7.2",
-          "manifestUrl": "https://github.com/mclemente/fvtt-dice-tray/releases/download/3.7.2/module.json"
+          "manifestUrl": "https://github.com/mclemente/fvtt-dice-tray/releases/download/3.7.2/module.json",
+          "metadataManifestUrl": null
         }
       }
     ]
@@ -90,25 +136,41 @@
     "title": "Dynamic Active Effects",
     "description": "Расширяет Active Effects в dnd5e: связывает эффекты с предметами, бонусами и изменениями характеристик. Перед включением в старом мире сделайте резервную копию.",
     "category": "Автоматизация",
-    "systems": ["dnd5e"],
     "licenseType": "free",
-    "license": { "name": "MIT", "url": "https://gitlab.com/tposney/dae/-/blob/v13/LICENSE" },
+    "license": {
+      "name": "MIT",
+      "url": "https://gitlab.com/tposney/dae/-/blob/v13/LICENSE"
+    },
     "projectUrl": "https://gitlab.com/tposney/dae",
-    "dependencies": { "required": ["lib-wrapper", "socketlib"], "recommended": [] },
     "tracks": [
       {
         "foundryMajor": 13,
         "moduleVersion": "13.0.29",
         "installManifestUrl": "https://gitlab.com/tposney/dae/-/releases/v13.0.29/downloads/module.json",
         "declaredManifestUrl": null,
-        "compatibility": { "minimum": "13.0", "verified": "13.351", "maximum": "13.999" },
+        "compatibility": {
+          "minimum": "13.0",
+          "verified": "13.351",
+          "maximum": "13.999"
+        },
+        "relationships": {
+          "systems": [
+            "dnd5e"
+          ],
+          "required": [
+            "lib-wrapper",
+            "socketlib"
+          ],
+          "recommended": []
+        },
         "verificationStatus": "verified",
         "verifiedAt": "2026-08-19",
         "verificationNotes": "Manifest требует lib-wrapper и socketlib.",
         "sources": {
           "catalogUrl": "https://foundryvtt.com/packages/dae",
           "releaseUrl": "https://gitlab.com/tposney/dae/-/releases/v13.0.29",
-          "manifestUrl": "https://gitlab.com/tposney/dae/-/releases/v13.0.29/downloads/module.json"
+          "manifestUrl": "https://gitlab.com/tposney/dae/-/releases/v13.0.29/downloads/module.json",
+          "metadataManifestUrl": null
         }
       },
       {
@@ -116,14 +178,29 @@
         "moduleVersion": "14.0.12",
         "installManifestUrl": "https://gitlab.com/tposney/dae/-/releases/v14.0.12/downloads/module.json",
         "declaredManifestUrl": null,
-        "compatibility": { "minimum": "14", "verified": "14.356", "maximum": "14.999" },
+        "compatibility": {
+          "minimum": "14",
+          "verified": "14.356",
+          "maximum": "14.999"
+        },
+        "relationships": {
+          "systems": [
+            "dnd5e"
+          ],
+          "required": [
+            "lib-wrapper",
+            "socketlib"
+          ],
+          "recommended": []
+        },
         "verificationStatus": "verified",
         "verifiedAt": "2026-08-19",
         "verificationNotes": "Manifest требует lib-wrapper и socketlib.",
         "sources": {
           "catalogUrl": "https://foundryvtt.com/packages/dae",
           "releaseUrl": "https://gitlab.com/tposney/dae/-/releases/v14.0.12",
-          "manifestUrl": "https://gitlab.com/tposney/dae/-/releases/v14.0.12/downloads/module.json"
+          "manifestUrl": "https://gitlab.com/tposney/dae/-/releases/v14.0.12/downloads/module.json",
+          "metadataManifestUrl": null
         }
       }
     ]
@@ -133,25 +210,35 @@
     "title": "libWrapper",
     "description": "Библиотека, через которую другие модули безопаснее изменяют методы Foundry Virtual Tabletop. Если модуль указывает libWrapper как зависимость, установите библиотеку первой.",
     "category": "Базовые библиотеки",
-    "systems": ["Любая система"],
     "licenseType": "free",
-    "license": { "name": "LGPL-3.0", "url": "https://github.com/ruipin/fvtt-lib-wrapper/blob/master/LICENSE" },
+    "license": {
+      "name": "LGPL-3.0",
+      "url": "https://github.com/ruipin/fvtt-lib-wrapper/blob/master/LICENSE"
+    },
     "projectUrl": "https://github.com/ruipin/fvtt-lib-wrapper",
-    "dependencies": { "required": [], "recommended": [] },
     "tracks": [
       {
         "foundryMajor": 13,
         "moduleVersion": "1.13.4.0",
         "installManifestUrl": "https://github.com/ruipin/fvtt-lib-wrapper/releases/download/v1.13.4.0/module.json",
         "declaredManifestUrl": "https://github.com/ruipin/fvtt-lib-wrapper/releases/latest/download/module.json",
-        "compatibility": { "minimum": "0.6.5", "verified": "13" },
+        "compatibility": {
+          "minimum": "0.6.5",
+          "verified": "13"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
         "verificationStatus": "verified",
         "verifiedAt": "2026-08-19",
         "verificationNotes": "Закреплённый релиз, проверенный автором на V13.",
         "sources": {
           "catalogUrl": "https://foundryvtt.com/packages/lib-wrapper",
           "releaseUrl": "https://github.com/ruipin/fvtt-lib-wrapper/releases/tag/v1.13.4.0",
-          "manifestUrl": "https://github.com/ruipin/fvtt-lib-wrapper/releases/download/v1.13.4.0/module.json"
+          "manifestUrl": "https://github.com/ruipin/fvtt-lib-wrapper/releases/download/v1.13.4.0/module.json",
+          "metadataManifestUrl": null
         }
       },
       {
@@ -159,14 +246,23 @@
         "moduleVersion": "1.13.5.1",
         "installManifestUrl": "https://github.com/ruipin/fvtt-lib-wrapper/releases/download/v1.13.5.1/module.json",
         "declaredManifestUrl": "https://github.com/ruipin/fvtt-lib-wrapper/releases/latest/download/module.json",
-        "compatibility": { "minimum": "0.6.5", "verified": "14" },
+        "compatibility": {
+          "minimum": "0.6.5",
+          "verified": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
         "verificationStatus": "verified",
         "verifiedAt": "2026-08-19",
         "verificationNotes": "Закреплённый релиз, проверенный автором на V14.",
         "sources": {
           "catalogUrl": "https://foundryvtt.com/packages/lib-wrapper",
           "releaseUrl": "https://github.com/ruipin/fvtt-lib-wrapper/releases/tag/v1.13.5.1",
-          "manifestUrl": "https://github.com/ruipin/fvtt-lib-wrapper/releases/download/v1.13.5.1/module.json"
+          "manifestUrl": "https://github.com/ruipin/fvtt-lib-wrapper/releases/download/v1.13.5.1/module.json",
+          "metadataManifestUrl": null
         }
       }
     ]
@@ -176,11 +272,12 @@
     "title": "JB2A Patreon Collection",
     "description": "Расширенная библиотека анимаций JB2A для подписчиков. Ссылку на установку выдаёт сам автор после подтверждения доступа, поэтому публичного manifest здесь нет.",
     "category": "Премиальные модули",
-    "systems": ["dnd5e", "Любая система"],
     "licenseType": "premium",
-    "license": { "name": "Не указана публично", "url": null },
+    "license": {
+      "name": "Не указана публично",
+      "url": null
+    },
     "projectUrl": "https://www.patreon.com/JB2A/about",
-    "dependencies": { "required": [], "recommended": ["Sequencer"] },
     "tracks": [
       {
         "foundryMajor": 13,
@@ -188,13 +285,19 @@
         "installManifestUrl": null,
         "declaredManifestUrl": null,
         "compatibility": {},
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
         "verificationStatus": "personal-premium-link",
         "verifiedAt": "2026-08-19",
         "verificationNotes": "Patreon выдаёт установочные данные только пользователю с доступом.",
         "sources": {
           "catalogUrl": "https://foundryvtt.com/packages/JB2A_DnD5e",
           "releaseUrl": "https://www.patreon.com/JB2A/about",
-          "manifestUrl": null
+          "manifestUrl": null,
+          "metadataManifestUrl": null
         }
       },
       {
@@ -203,13 +306,1908 @@
         "installManifestUrl": null,
         "declaredManifestUrl": null,
         "compatibility": {},
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
         "verificationStatus": "personal-premium-link",
         "verifiedAt": "2026-08-19",
         "verificationNotes": "Patreon выдаёт установочные данные только пользователю с доступом.",
         "sources": {
           "catalogUrl": "https://foundryvtt.com/packages/JB2A_DnD5e",
           "releaseUrl": "https://www.patreon.com/JB2A/about",
-          "manifestUrl": null
+          "manifestUrl": null,
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "levels",
+    "title": "Levels",
+    "description": "Добавляет этажи и высоту на одну сцену. Перед большой переделкой карты сохраните копию мира: стены и токены начинают учитывать вертикальное положение.",
+    "category": "Карты и сцены",
+    "licenseType": "free",
+    "license": {
+      "name": "Не указана автором",
+      "url": null
+    },
+    "projectUrl": "https://github.com/theripper93/Levels",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "6.1.0",
+        "installManifestUrl": "https://github.com/theripper93/Levels/releases/download/6.1.0/module.json",
+        "declaredManifestUrl": "https://github.com/theripper93/Levels/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "13",
+          "verified": "13",
+          "maximum": "13"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [
+            "lib-wrapper",
+            "wall-height"
+          ],
+          "recommended": [
+            "theripper-premium-hub"
+          ]
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Ветка V13 требует lib-wrapper и wall-height.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/levels",
+          "releaseUrl": "https://github.com/theripper93/Levels/releases/tag/6.1.0",
+          "manifestUrl": "https://github.com/theripper93/Levels/releases/download/6.1.0/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "7.0.3",
+        "installManifestUrl": "https://github.com/theripper93/Levels/releases/download/7.0.3/module.json",
+        "declaredManifestUrl": "https://github.com/theripper93/Levels/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "14",
+          "verified": "14",
+          "maximum": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [
+            "lib-wrapper"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Ветка V14 требует только lib-wrapper.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/levels",
+          "releaseUrl": "https://github.com/theripper93/Levels/releases/tag/7.0.3",
+          "manifestUrl": "https://github.com/theripper93/Levels/releases/download/7.0.3/module.json",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "hover-distance",
+    "title": "Hover Distance",
+    "description": "Показывает расстояние до точки под курсором с учётом сцены. Это платный модуль: установочную ссылку автор выдаёт владельцу лицензии.",
+    "category": "Бой и интерфейс",
+    "licenseType": "premium",
+    "license": {
+      "name": "Не указана публично",
+      "url": null
+    },
+    "projectUrl": "https://www.patreon.com/theripper93",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "5.0.1",
+        "installManifestUrl": null,
+        "declaredManifestUrl": null,
+        "compatibility": {
+          "minimum": "13",
+          "verified": "13"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [
+            "lib-wrapper"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "personal-premium-link",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальный manifest подтверждает версию, но не содержит публичной ссылки скачивания. Получите установочную ссылку у автора.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/hover-distance",
+          "releaseUrl": null,
+          "manifestUrl": null,
+          "metadataManifestUrl": "https://r2.foundryvtt.com/packages-public/hover-distance/module-5.0.1.json"
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "6.0.1",
+        "installManifestUrl": null,
+        "declaredManifestUrl": null,
+        "compatibility": {
+          "minimum": "14",
+          "verified": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [
+            "lib-wrapper"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "personal-premium-link",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальный manifest подтверждает версию, но не содержит публичной ссылки скачивания. Получите установочную ссылку у автора.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/hover-distance",
+          "releaseUrl": null,
+          "manifestUrl": null,
+          "metadataManifestUrl": "https://r2.foundryvtt.com/packages-public/hover-distance/module-6.0.1.json"
+        }
+      }
+    ]
+  },
+  {
+    "id": "simple-requests",
+    "title": "Simple Requests",
+    "description": "Добавляет очередь запросов над чатом: игроки отмечают срочность, а ведущий разбирает обращения по порядку. Полезно в голосовой игре, где легко перебить друг друга.",
+    "category": "Инструменты ведущего",
+    "licenseType": "free",
+    "license": {
+      "name": "Не указана автором",
+      "url": null
+    },
+    "projectUrl": "https://github.com/Achoobert/FoundryVTT-Simple-requests",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "1.0.8",
+        "installManifestUrl": "https://github.com/Achoobert/FoundryVTT-Simple-requests/releases/download/v1.0.8/module.json",
+        "declaredManifestUrl": "https://github.com/achoobert/FoundryVTT-Simple-requests/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "12",
+          "verified": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [
+            "socketlib"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Один закреплённый релиз обслуживает V13 и V14; требуется socketlib.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/simple-requests",
+          "releaseUrl": "https://github.com/Achoobert/FoundryVTT-Simple-requests/releases/tag/v1.0.8",
+          "manifestUrl": "https://github.com/Achoobert/FoundryVTT-Simple-requests/releases/download/v1.0.8/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "1.0.8",
+        "installManifestUrl": "https://github.com/Achoobert/FoundryVTT-Simple-requests/releases/download/v1.0.8/module.json",
+        "declaredManifestUrl": "https://github.com/achoobert/FoundryVTT-Simple-requests/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "12",
+          "verified": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [
+            "socketlib"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Один закреплённый релиз обслуживает V13 и V14; требуется socketlib.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/simple-requests",
+          "releaseUrl": "https://github.com/Achoobert/FoundryVTT-Simple-requests/releases/tag/v1.0.8",
+          "manifestUrl": "https://github.com/Achoobert/FoundryVTT-Simple-requests/releases/download/v1.0.8/module.json",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "monks-tokenbar",
+    "title": "Monk's TokenBar",
+    "description": "Собирает токены текущей сцены в панель, показывает AC и пассивное восприятие, помогает запросить спасбросок или ограничить движение.",
+    "category": "Бой и интерфейс",
+    "licenseType": "free",
+    "license": {
+      "name": "GPL-3.0",
+      "url": "https://github.com/ironmonk108/monks-tokenbar/blob/main/LICENSE"
+    },
+    "projectUrl": "https://github.com/ironmonk108/monks-tokenbar",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "13.02",
+        "installManifestUrl": "https://raw.githubusercontent.com/ironmonk108/monks-tokenbar/13.02/module.json",
+        "declaredManifestUrl": "https://github.com/ironmonk108/monks-tokenbar/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "13",
+          "verified": "13"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Каталог заявляет поддержку Foundry VTT 13 и новее.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/monks-tokenbar",
+          "releaseUrl": "https://github.com/ironmonk108/monks-tokenbar/releases/tag/13.02",
+          "manifestUrl": "https://raw.githubusercontent.com/ironmonk108/monks-tokenbar/13.02/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "13.02",
+        "installManifestUrl": "https://raw.githubusercontent.com/ironmonk108/monks-tokenbar/13.02/module.json",
+        "declaredManifestUrl": "https://github.com/ironmonk108/monks-tokenbar/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "13",
+          "verified": "13"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Каталог заявляет поддержку Foundry VTT 13 и новее.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/monks-tokenbar",
+          "releaseUrl": "https://github.com/ironmonk108/monks-tokenbar/releases/tag/13.02",
+          "manifestUrl": "https://raw.githubusercontent.com/ironmonk108/monks-tokenbar/13.02/module.json",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "healthEstimate",
+    "title": "Health Estimate",
+    "description": "Показывает при наведении примерное состояние здоровья токена вместо точного числа HP. Вид и пороги можно настроить под свою систему.",
+    "category": "Бой и интерфейс",
+    "licenseType": "free",
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/mclemente/healthEstimate/blob/master/LICENSE.txt"
+    },
+    "projectUrl": "https://github.com/mclemente/healthEstimate",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "34.3.9",
+        "installManifestUrl": "https://github.com/mclemente/healthEstimate/releases/download/34.3.9/module.json",
+        "declaredManifestUrl": "https://github.com/mclemente/healthEstimate/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "13",
+          "verified": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Закреплённый релиз ветки V13.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/healthEstimate",
+          "releaseUrl": "https://github.com/mclemente/healthEstimate/releases/tag/34.3.9",
+          "manifestUrl": "https://github.com/mclemente/healthEstimate/releases/download/34.3.9/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "35.0.5",
+        "installManifestUrl": "https://github.com/mclemente/healthEstimate/releases/download/35.0.5/module.json",
+        "declaredManifestUrl": "https://github.com/mclemente/healthEstimate/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "14",
+          "verified": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Закреплённый релиз ветки V14.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/healthEstimate",
+          "releaseUrl": "https://github.com/mclemente/healthEstimate/releases/tag/35.0.5",
+          "manifestUrl": "https://github.com/mclemente/healthEstimate/releases/download/35.0.5/module.json",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "token-action-hud-core",
+    "title": "Token Action HUD Core",
+    "description": "Даёт перемещаемую панель действий выбранного токена. Для работы нужен модуль конкретной игровой системы и socketlib.",
+    "category": "Бой и интерфейс",
+    "licenseType": "free",
+    "license": {
+      "name": "Не указана автором",
+      "url": null
+    },
+    "projectUrl": "https://github.com/Larkinabout/fvtt-token-action-hud-core",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "2.1.1",
+        "installManifestUrl": "https://github.com/Larkinabout/fvtt-token-action-hud-core/releases/download/2.1.1/module.json",
+        "declaredManifestUrl": "https://github.com/Larkinabout/fvtt-token-action-hud-core/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "13.351",
+          "verified": "14.360"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [
+            "socketlib"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Один закреплённый релиз обслуживает V13 и V14; требуется socketlib.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/token-action-hud-core",
+          "releaseUrl": "https://github.com/Larkinabout/fvtt-token-action-hud-core/releases/tag/2.1.1",
+          "manifestUrl": "https://github.com/Larkinabout/fvtt-token-action-hud-core/releases/download/2.1.1/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "2.1.1",
+        "installManifestUrl": "https://github.com/Larkinabout/fvtt-token-action-hud-core/releases/download/2.1.1/module.json",
+        "declaredManifestUrl": "https://github.com/Larkinabout/fvtt-token-action-hud-core/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "13.351",
+          "verified": "14.360"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [
+            "socketlib"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Один закреплённый релиз обслуживает V13 и V14; требуется socketlib.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/token-action-hud-core",
+          "releaseUrl": "https://github.com/Larkinabout/fvtt-token-action-hud-core/releases/tag/2.1.1",
+          "manifestUrl": "https://github.com/Larkinabout/fvtt-token-action-hud-core/releases/download/2.1.1/module.json",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "token-action-hud-dnd5e",
+    "title": "Token Action HUD D&D5e",
+    "description": "Подключает Token Action HUD к dnd5e: броски, предметы и действия доступны без открытия листа персонажа. Сначала установите Token Action HUD Core.",
+    "category": "Бой и интерфейс",
+    "licenseType": "free",
+    "license": {
+      "name": "Не указана автором",
+      "url": null
+    },
+    "projectUrl": "https://github.com/Larkinabout/fvtt-token-action-hud-dnd5e",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "2.1.0",
+        "installManifestUrl": "https://github.com/Larkinabout/fvtt-token-action-hud-dnd5e/releases/download/2.1.0/module.json",
+        "declaredManifestUrl": "https://github.com/Larkinabout/fvtt-token-action-hud-dnd5e/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "13.351",
+          "verified": "14.360"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [
+            "token-action-hud-core"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Manifest требует Token Action HUD Core и dnd5e от 5.1.0 до 5.99.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/token-action-hud-dnd5e",
+          "releaseUrl": "https://github.com/Larkinabout/fvtt-token-action-hud-dnd5e/releases/tag/2.1.0",
+          "manifestUrl": "https://github.com/Larkinabout/fvtt-token-action-hud-dnd5e/releases/download/2.1.0/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "2.1.0",
+        "installManifestUrl": "https://github.com/Larkinabout/fvtt-token-action-hud-dnd5e/releases/download/2.1.0/module.json",
+        "declaredManifestUrl": "https://github.com/Larkinabout/fvtt-token-action-hud-dnd5e/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "13.351",
+          "verified": "14.360"
+        },
+        "relationships": {
+          "systems": [
+            "dnd5e"
+          ],
+          "required": [
+            "token-action-hud-core"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Manifest требует Token Action HUD Core и dnd5e от 5.1.0 до 5.99.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/token-action-hud-dnd5e",
+          "releaseUrl": "https://github.com/Larkinabout/fvtt-token-action-hud-dnd5e/releases/tag/2.1.0",
+          "manifestUrl": "https://github.com/Larkinabout/fvtt-token-action-hud-dnd5e/releases/download/2.1.0/module.json",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "combatbooster",
+    "title": "Combat Booster",
+    "description": "Добавляет метку текущего хода, список последних действий и уведомления о начале хода. Последние действия работают только в dnd5e.",
+    "category": "Бой и интерфейс",
+    "licenseType": "free",
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/theripper93/Combat-Booster/blob/master/LICENSE"
+    },
+    "projectUrl": "https://github.com/theripper93/Combat-Booster",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "5.0.2",
+        "installManifestUrl": "https://github.com/theripper93/Combat-Booster/releases/download/5.0.2/module.json",
+        "declaredManifestUrl": "https://github.com/theripper93/Combat-Booster/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "13",
+          "verified": "13"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Закреплённый релиз ветки V13.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/combatbooster",
+          "releaseUrl": "https://github.com/theripper93/Combat-Booster/releases/tag/5.0.2",
+          "manifestUrl": "https://github.com/theripper93/Combat-Booster/releases/download/5.0.2/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "6.0.1",
+        "installManifestUrl": "https://github.com/theripper93/Combat-Booster/releases/download/6.0.1/module.json",
+        "declaredManifestUrl": "https://github.com/theripper93/Combat-Booster/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "14",
+          "verified": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Закреплённый релиз ветки V14.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/combatbooster",
+          "releaseUrl": "https://github.com/theripper93/Combat-Booster/releases/tag/6.0.1",
+          "manifestUrl": "https://github.com/theripper93/Combat-Booster/releases/download/6.0.1/module.json",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "hurry-up",
+    "title": "Hurry Up! Combat Timer",
+    "description": "Запускает таймер на ходу игрока, предупреждает о конце времени и при желании переводит очередь к следующему участнику.",
+    "category": "Бой и интерфейс",
+    "licenseType": "free",
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/theripper93/hurry-up/blob/master/LICENSE"
+    },
+    "projectUrl": "https://github.com/theripper93/hurry-up",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "3.0.3",
+        "installManifestUrl": "https://github.com/theripper93/hurry-up/releases/download/3.0.3/module.json",
+        "declaredManifestUrl": "https://github.com/theripper93/hurry-up/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "13",
+          "verified": "13"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Закреплённый релиз ветки V13.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/hurry-up",
+          "releaseUrl": "https://github.com/theripper93/hurry-up/releases/tag/3.0.3",
+          "manifestUrl": "https://github.com/theripper93/hurry-up/releases/download/3.0.3/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "4.0.0",
+        "installManifestUrl": "https://github.com/theripper93/hurry-up/releases/download/4.0.0/module.json",
+        "declaredManifestUrl": "https://github.com/theripper93/hurry-up/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "14",
+          "verified": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Закреплённый релиз ветки V14.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/hurry-up",
+          "releaseUrl": "https://github.com/theripper93/hurry-up/releases/tag/4.0.0",
+          "manifestUrl": "https://github.com/theripper93/hurry-up/releases/download/4.0.0/module.json",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "disposition-initiative",
+    "title": "Disposition Initiative",
+    "description": "Группирует выбранные токены по отношению к игрокам и назначает всей стороне один бросок инициативы. Это сокращает начало больших боёв.",
+    "category": "Бой и интерфейс",
+    "licenseType": "free",
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/luizrcb/disposition-initiative/blob/master/LICENSE"
+    },
+    "projectUrl": "https://github.com/luizrcb/disposition-initiative",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "1.0.0",
+        "installManifestUrl": "https://github.com/luizrcb/disposition-initiative/releases/download/1.0.0/module.json",
+        "declaredManifestUrl": "https://github.com/luizrcb/disposition-initiative/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "13",
+          "verified": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Один закреплённый релиз обслуживает V13 и V14.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/disposition-initiative",
+          "releaseUrl": "https://github.com/luizrcb/disposition-initiative/releases/tag/1.0.0",
+          "manifestUrl": "https://github.com/luizrcb/disposition-initiative/releases/download/1.0.0/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "1.0.0",
+        "installManifestUrl": "https://github.com/luizrcb/disposition-initiative/releases/download/1.0.0/module.json",
+        "declaredManifestUrl": "https://github.com/luizrcb/disposition-initiative/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "13",
+          "verified": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Один закреплённый релиз обслуживает V13 и V14.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/disposition-initiative",
+          "releaseUrl": "https://github.com/luizrcb/disposition-initiative/releases/tag/1.0.0",
+          "manifestUrl": "https://github.com/luizrcb/disposition-initiative/releases/download/1.0.0/module.json",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "quick-insert",
+    "title": "Quick Insert",
+    "description": "Открывает поиск по актёрам, предметам, заклинаниям, сценам и командам по Ctrl+Space. Результат можно сразу вставить или перетащить в нужное место.",
+    "category": "Инструменты ведущего",
+    "licenseType": "free",
+    "license": {
+      "name": "MIT",
+      "url": "https://gitlab.com/fvtt-modules-lab/quick-insert/-/blob/master/LICENSE.md"
+    },
+    "projectUrl": "https://gitlab.com/fvtt-modules-lab/quick-insert",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "3.7.8",
+        "installManifestUrl": "https://gitlab.com/fvtt-modules-lab/quick-insert/-/releases/3.7.8/downloads/module.json",
+        "declaredManifestUrl": "https://gitlab.com/fvtt-modules-lab/quick-insert/-/releases/permalink/latest/downloads/module.json",
+        "compatibility": {
+          "minimum": "13.341",
+          "verified": "14.361"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Один закреплённый релиз обслуживает V13 и V14.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/quick-insert",
+          "releaseUrl": "https://gitlab.com/fvtt-modules-lab/quick-insert/-/releases/3.7.8",
+          "manifestUrl": "https://gitlab.com/fvtt-modules-lab/quick-insert/-/releases/3.7.8/downloads/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "3.7.8",
+        "installManifestUrl": "https://gitlab.com/fvtt-modules-lab/quick-insert/-/releases/3.7.8/downloads/module.json",
+        "declaredManifestUrl": "https://gitlab.com/fvtt-modules-lab/quick-insert/-/releases/permalink/latest/downloads/module.json",
+        "compatibility": {
+          "minimum": "13.341",
+          "verified": "14.361"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Один закреплённый релиз обслуживает V13 и V14.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/quick-insert",
+          "releaseUrl": "https://gitlab.com/fvtt-modules-lab/quick-insert/-/releases/3.7.8",
+          "manifestUrl": "https://gitlab.com/fvtt-modules-lab/quick-insert/-/releases/3.7.8/downloads/module.json",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "midi-qol",
+    "title": "Midi QOL",
+    "description": "Автоматизирует атаки, спасброски, урон и эффекты в D&D5e. Сначала проверьте настройки на копии мира.",
+    "category": "Автоматизация D&D5e",
+    "licenseType": "free",
+    "license": {
+      "name": "MIT",
+      "url": "https://gitlab.com/tposney/midi-qol/-/blob/master/LICENSE"
+    },
+    "projectUrl": "https://gitlab.com/tposney/midi-qol",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "13.0.64",
+        "installManifestUrl": "https://gitlab.com/tposney/midi-qol/-/releases/v13.0.64/downloads/module.json",
+        "declaredManifestUrl": "https://gitlab.com/tposney/midi-qol/raw/v13/package/module.json",
+        "compatibility": {
+          "minimum": "13",
+          "verified": "13.351",
+          "maximum": "13.999"
+        },
+        "relationships": {
+          "systems": [
+            "dnd5e"
+          ],
+          "required": [
+            "socketlib",
+            "lib-wrapper",
+            "dae"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/midi-qol",
+          "releaseUrl": "https://gitlab.com/tposney/midi-qol/-/releases/v13.0.64",
+          "manifestUrl": "https://gitlab.com/tposney/midi-qol/-/releases/v13.0.64/downloads/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "14.0.11",
+        "installManifestUrl": "https://gitlab.com/tposney/midi-qol/-/releases/v14.0.11/downloads/module.json",
+        "declaredManifestUrl": "https://gitlab.com/tposney/midi-qol/raw/v14/package/module.json",
+        "compatibility": {
+          "minimum": "14",
+          "verified": "14.357",
+          "maximum": "14.999"
+        },
+        "relationships": {
+          "systems": [
+            "dnd5e"
+          ],
+          "required": [
+            "socketlib",
+            "lib-wrapper",
+            "dae"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/midi-qol",
+          "releaseUrl": "https://gitlab.com/tposney/midi-qol/-/releases/v14.0.11",
+          "manifestUrl": "https://gitlab.com/tposney/midi-qol/-/releases/v14.0.11/downloads/module.json",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "times-up",
+    "title": "Times Up",
+    "description": "Завершает активные эффекты по раундам, ходам и игровому времени.",
+    "category": "Автоматизация D&D5e",
+    "licenseType": "free",
+    "license": {
+      "name": "MIT",
+      "url": "https://gitlab.com/tposney/times-up/-/blob/master/LICENSE"
+    },
+    "projectUrl": "https://gitlab.com/tposney/times-up",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": null,
+        "installManifestUrl": null,
+        "declaredManifestUrl": null,
+        "compatibility": {},
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "no-public-manifest",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Каталог публикует 13.1.9, но закреплённый tag v13.1.9 отдаёт module.json с version=13.1.8; catalog Manifest URL указывает на mutable master. Тройка для конкретной версии не сходится.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/times-up",
+          "releaseUrl": null,
+          "manifestUrl": null,
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": null,
+        "installManifestUrl": null,
+        "declaredManifestUrl": null,
+        "compatibility": {},
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "unavailable",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальный каталог прямо сообщает, что версии для Foundry VTT 14 не будет; опубликованный V13 manifest ограничен maximum=13.999.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/times-up",
+          "releaseUrl": null,
+          "manifestUrl": null,
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "dfreds-convenient-effects",
+    "title": "DFreds Convenient Effects",
+    "description": "Добавляет готовую библиотеку состояний и эффектов для персонажей и токенов.",
+    "category": "Автоматизация D&D5e",
+    "licenseType": "free",
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/DFreds/dfreds-convenient-effects/blob/main/LICENSE"
+    },
+    "projectUrl": "https://github.com/DFreds/dfreds-convenient-effects",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "8.2.5",
+        "installManifestUrl": "https://github.com/DFreds/dfreds-convenient-effects/releases/download/v8.2.5/module.json",
+        "declaredManifestUrl": "https://github.com/DFreds/dfreds-convenient-effects/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": 13,
+          "verified": 13,
+          "maximum": 13
+        },
+        "relationships": {
+          "systems": [],
+          "required": [
+            "socketlib",
+            "lib-dfreds-ui-extender",
+            "lib-dfreds-migrations"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/dfreds-convenient-effects",
+          "releaseUrl": "https://github.com/DFreds/dfreds-convenient-effects/releases/tag/v8.2.5",
+          "manifestUrl": "https://github.com/DFreds/dfreds-convenient-effects/releases/download/v8.2.5/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "9.2.6",
+        "installManifestUrl": "https://github.com/DFreds/dfreds-convenient-effects/releases/download/v9.2.6/module.json",
+        "declaredManifestUrl": "https://github.com/DFreds/dfreds-convenient-effects/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": 14,
+          "verified": 14,
+          "maximum": 14
+        },
+        "relationships": {
+          "systems": [],
+          "required": [
+            "socketlib",
+            "lib-dfreds-ui-extender",
+            "lib-dfreds-migrations"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/dfreds-convenient-effects",
+          "releaseUrl": "https://github.com/DFreds/dfreds-convenient-effects/releases/tag/v9.2.6",
+          "manifestUrl": "https://github.com/DFreds/dfreds-convenient-effects/releases/download/v9.2.6/module.json",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "ActiveAuras",
+    "title": "Active Auras",
+    "description": "Применяет эффекты к токенам внутри аур и областей действия.",
+    "category": "Автоматизация D&D5e",
+    "licenseType": "free",
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/kandashi/Active-Auras/blob/main/LICENSE"
+    },
+    "projectUrl": "https://github.com/kandashi/Active-Auras",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "0.12.7",
+        "installManifestUrl": "https://github.com/kandashi/Active-Auras/releases/download/0.12.7/module.json",
+        "declaredManifestUrl": "https://github.com/kandashi/Active-Auras/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": 12,
+          "verified": 13,
+          "maximum": 13
+        },
+        "relationships": {
+          "systems": [],
+          "required": [
+            "socketlib",
+            "lib-wrapper"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/ActiveAuras",
+          "releaseUrl": "https://github.com/kandashi/Active-Auras/releases/tag/0.12.7",
+          "manifestUrl": "https://github.com/kandashi/Active-Auras/releases/download/0.12.7/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": null,
+        "installManifestUrl": null,
+        "declaredManifestUrl": null,
+        "compatibility": {},
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "unavailable",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "В официальном каталоге нет V14-релиза; последний 0.12.7 и его manifest ограничены maximum=13.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/ActiveAuras",
+          "releaseUrl": null,
+          "manifestUrl": null,
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "ATL",
+    "title": "Active Token Effects / ATL",
+    "description": "Позволяет активным эффектам менять свет и параметры токена.",
+    "category": "Автоматизация D&D5e",
+    "licenseType": "free",
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/kandashi/Active-Token-Lighting/blob/main/LICENSE"
+    },
+    "projectUrl": "https://github.com/kandashi/Active-Token-Lighting",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "v1.1.1",
+        "installManifestUrl": "https://github.com/kandashi/Active-Token-Lighting/releases/download/v1.1.1/module.json",
+        "declaredManifestUrl": "https://github.com/kandashi/Active-Token-Lighting/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": 13,
+          "verified": 13
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/ATL",
+          "releaseUrl": "https://github.com/kandashi/Active-Token-Lighting/releases/tag/v1.1.1",
+          "manifestUrl": "https://github.com/kandashi/Active-Token-Lighting/releases/download/v1.1.1/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "v1.1.1",
+        "installManifestUrl": "https://github.com/kandashi/Active-Token-Lighting/releases/download/v1.1.1/module.json",
+        "declaredManifestUrl": "https://github.com/kandashi/Active-Token-Lighting/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": 13,
+          "verified": 13
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Manifest и каталог объявляют диапазон 13+ без maximum; raw verified остаётся 13 и не повышен редакционно.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/ATL",
+          "releaseUrl": "https://github.com/kandashi/Active-Token-Lighting/releases/tag/v1.1.1",
+          "manifestUrl": "https://github.com/kandashi/Active-Token-Lighting/releases/download/v1.1.1/module.json",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "socketlib",
+    "title": "socketlib",
+    "description": "Библиотека сетевых вызовов, от которой зависят многие сложные модули.",
+    "category": "Библиотеки",
+    "licenseType": "free",
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/farling42/foundryvtt-socketlib/blob/master/LICENSE"
+    },
+    "projectUrl": "https://github.com/farling42/foundryvtt-socketlib",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "v1.1.3",
+        "installManifestUrl": "https://github.com/farling42/foundryvtt-socketlib/releases/download/v1.1.3/module.json",
+        "declaredManifestUrl": "https://github.com/farling42/foundryvtt-socketlib/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "11",
+          "verified": "13"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/socketlib",
+          "releaseUrl": "https://github.com/farling42/foundryvtt-socketlib/releases/tag/v1.1.3",
+          "manifestUrl": "https://github.com/farling42/foundryvtt-socketlib/releases/download/v1.1.3/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "v1.1.4",
+        "installManifestUrl": "https://github.com/farling42/foundryvtt-socketlib/releases/download/v1.1.4/module.json",
+        "declaredManifestUrl": "https://github.com/farling42/foundryvtt-socketlib/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "11",
+          "verified": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/socketlib",
+          "releaseUrl": "https://github.com/farling42/foundryvtt-socketlib/releases/tag/v1.1.4",
+          "manifestUrl": "https://github.com/farling42/foundryvtt-socketlib/releases/download/v1.1.4/module.json",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "sequencer",
+    "title": "Sequencer",
+    "description": "Запускает последовательности анимаций, звуков и макросов.",
+    "category": "Анимации и звук",
+    "licenseType": "free",
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/fantasycalendar/FoundryVTT-Sequencer/blob/master/LICENSE"
+    },
+    "projectUrl": "https://github.com/fantasycalendar/FoundryVTT-Sequencer",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "3.6.11",
+        "installManifestUrl": "https://github.com/fantasycalendar/FoundryVTT-Sequencer/releases/download/3.6.11/module.json",
+        "declaredManifestUrl": "https://github.com/fantasycalendar/FoundryVTT-Sequencer/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "12",
+          "verified": "13",
+          "maximum": "13"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [
+            "socketlib"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/sequencer",
+          "releaseUrl": "https://github.com/fantasycalendar/FoundryVTT-Sequencer/releases/tag/3.6.11",
+          "manifestUrl": "https://github.com/fantasycalendar/FoundryVTT-Sequencer/releases/download/3.6.11/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "4.2.3",
+        "installManifestUrl": "https://github.com/fantasycalendar/FoundryVTT-Sequencer/releases/download/4.2.3/module.json",
+        "declaredManifestUrl": "https://github.com/fantasycalendar/FoundryVTT-Sequencer/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "13",
+          "verified": "14",
+          "maximum": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/sequencer",
+          "releaseUrl": "https://github.com/fantasycalendar/FoundryVTT-Sequencer/releases/tag/4.2.3",
+          "manifestUrl": "https://github.com/fantasycalendar/FoundryVTT-Sequencer/releases/download/4.2.3/module.json",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "autoanimations",
+    "title": "Automated Animations",
+    "description": "Автоматически подбирает и запускает анимации для атак, заклинаний и эффектов.",
+    "category": "Анимации и звук",
+    "licenseType": "free",
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/theripper93/autoanimations/blob/main/LICENSE"
+    },
+    "projectUrl": "https://github.com/theripper93/autoanimations",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "6.8.7",
+        "installManifestUrl": "https://github.com/theripper93/autoanimations/releases/download/6.8.7/module.json",
+        "declaredManifestUrl": "https://github.com/theripper93/autoanimations/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "13",
+          "verified": "13",
+          "maximum": "13"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [
+            "sequencer",
+            "socketlib"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/autoanimations",
+          "releaseUrl": "https://github.com/theripper93/autoanimations/releases/tag/6.8.7",
+          "manifestUrl": "https://github.com/theripper93/autoanimations/releases/download/6.8.7/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "7.0.22",
+        "installManifestUrl": "https://github.com/theripper93/autoanimations/releases/download/7.0.22/module.json",
+        "declaredManifestUrl": "https://github.com/theripper93/autoanimations/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "14",
+          "verified": "14",
+          "maximum": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [
+            "sequencer",
+            "socketlib"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/autoanimations",
+          "releaseUrl": "https://github.com/theripper93/autoanimations/releases/tag/7.0.22",
+          "manifestUrl": "https://github.com/theripper93/autoanimations/releases/download/7.0.22/module.json",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "dnd5e-animations",
+    "title": "D&D5e Animations",
+    "description": "Добавляет готовые D&D5e-привязки и пресеты для Automated Animations.",
+    "category": "Анимации и звук",
+    "licenseType": "free",
+    "license": {
+      "name": "GPL-3.0",
+      "url": "https://github.com/MrVauxs/dnd5e-animations/blob/master/LICENSE"
+    },
+    "projectUrl": "https://github.com/MrVauxs/dnd5e-animations",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "3.2.0",
+        "installManifestUrl": "https://github.com/MrVauxs/dnd5e-animations/releases/download/3.2.0/module.json",
+        "declaredManifestUrl": "https://github.com/MrVauxs/dnd5e-animations/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "12",
+          "verified": "13"
+        },
+        "relationships": {
+          "systems": [
+            "dnd5e"
+          ],
+          "required": [
+            "autoanimations"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/dnd5e-animations",
+          "releaseUrl": "https://github.com/MrVauxs/dnd5e-animations/releases/tag/3.2.0",
+          "manifestUrl": "https://github.com/MrVauxs/dnd5e-animations/releases/download/3.2.0/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "3.3.0",
+        "installManifestUrl": "https://github.com/MrVauxs/dnd5e-animations/releases/download/3.3.0/module.json",
+        "declaredManifestUrl": "https://github.com/MrVauxs/dnd5e-animations/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "12",
+          "verified": "14"
+        },
+        "relationships": {
+          "systems": [
+            "dnd5e"
+          ],
+          "required": [
+            "autoanimations"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/dnd5e-animations",
+          "releaseUrl": "https://github.com/MrVauxs/dnd5e-animations/releases/tag/3.3.0",
+          "manifestUrl": "https://github.com/MrVauxs/dnd5e-animations/releases/download/3.3.0/module.json",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "JB2A_DnD5e",
+    "title": "JB2A Free",
+    "description": "Бесплатная библиотека анимаций для заклинаний, атак и эффектов.",
+    "category": "Анимации и звук",
+    "licenseType": "free",
+    "license": {
+      "name": "CC-BY-NC-SA-4.0",
+      "url": "https://github.com/Jules-Bens-Aa/JB2A_DnD5e/blob/main/License.txt"
+    },
+    "projectUrl": "https://github.com/Jules-Bens-Aa/JB2A_DnD5e",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "0.9.2",
+        "installManifestUrl": "https://github.com/Jules-Bens-Aa/JB2A_DnD5e/releases/download/0.9.2/module.json",
+        "declaredManifestUrl": "https://github.com/Jules-Bens-Aa/JB2A_DnD5e/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": 10,
+          "verified": 14
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/JB2A_DnD5e",
+          "releaseUrl": "https://github.com/Jules-Bens-Aa/JB2A_DnD5e/releases/tag/0.9.2",
+          "manifestUrl": "https://github.com/Jules-Bens-Aa/JB2A_DnD5e/releases/download/0.9.2/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "0.9.2",
+        "installManifestUrl": "https://github.com/Jules-Bens-Aa/JB2A_DnD5e/releases/download/0.9.2/module.json",
+        "declaredManifestUrl": "https://github.com/Jules-Bens-Aa/JB2A_DnD5e/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": 10,
+          "verified": 14
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/JB2A_DnD5e",
+          "releaseUrl": "https://github.com/Jules-Bens-Aa/JB2A_DnD5e/releases/tag/0.9.2",
+          "manifestUrl": "https://github.com/Jules-Bens-Aa/JB2A_DnD5e/releases/download/0.9.2/module.json",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "psfx",
+    "title": "PSFX Free",
+    "description": "Бесплатная библиотека звуковых эффектов для сцен и автоматизации.",
+    "category": "Анимации и звук",
+    "licenseType": "free",
+    "license": {
+      "name": "Не указана автором",
+      "url": null
+    },
+    "projectUrl": "https://github.com/JimHPerry/psfx",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "0.16.0",
+        "installManifestUrl": "https://github.com/JimHPerry/psfx/releases/download/0.16.0/module.json",
+        "declaredManifestUrl": "https://github.com/JimHPerry/psfx/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": 11,
+          "verified": 14
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/psfx",
+          "releaseUrl": "https://github.com/JimHPerry/psfx/releases/tag/0.16.0",
+          "manifestUrl": "https://github.com/JimHPerry/psfx/releases/download/0.16.0/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "0.16.0",
+        "installManifestUrl": "https://github.com/JimHPerry/psfx/releases/download/0.16.0/module.json",
+        "declaredManifestUrl": "https://github.com/JimHPerry/psfx/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": 11,
+          "verified": 14
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/psfx",
+          "releaseUrl": "https://github.com/JimHPerry/psfx/releases/tag/0.16.0",
+          "manifestUrl": "https://github.com/JimHPerry/psfx/releases/download/0.16.0/module.json",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "monks-active-tiles",
+    "title": "Monk's Active Tile Triggers",
+    "description": "Добавляет плиткам триггеры: телепорты, двери, звуки, сообщения и смену сцен.",
+    "category": "Карты и сцены",
+    "licenseType": "free",
+    "license": {
+      "name": "GPL-3.0",
+      "url": "https://github.com/ironmonk108/monks-active-tiles/blob/main/LICENSE"
+    },
+    "projectUrl": "https://github.com/ironmonk108/monks-active-tiles",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "13.06",
+        "installManifestUrl": "https://github.com/ironmonk108/monks-active-tiles/releases/download/13.06/module.json",
+        "declaredManifestUrl": "https://github.com/ironmonk108/monks-active-tiles/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "13",
+          "verified": "13"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/monks-active-tiles",
+          "releaseUrl": "https://github.com/ironmonk108/monks-active-tiles/releases/tag/13.06",
+          "manifestUrl": "https://github.com/ironmonk108/monks-active-tiles/releases/download/13.06/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "14.01",
+        "installManifestUrl": "https://github.com/ironmonk108/monks-active-tiles/releases/download/14.01/module.json",
+        "declaredManifestUrl": "https://github.com/ironmonk108/monks-active-tiles/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "14",
+          "verified": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/monks-active-tiles",
+          "releaseUrl": "https://github.com/ironmonk108/monks-active-tiles/releases/tag/14.01",
+          "manifestUrl": "https://github.com/ironmonk108/monks-active-tiles/releases/download/14.01/module.json",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "item-piles",
+    "title": "Item Piles",
+    "description": "Добавляет на карту лут, контейнеры, торговцев и удобное распределение добычи.",
+    "category": "Карты и сцены",
+    "licenseType": "free",
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/fantasycalendar/FoundryVTT-ItemPiles/blob/master/LICENSE"
+    },
+    "projectUrl": "https://github.com/fantasycalendar/FoundryVTT-ItemPiles",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "3.3.4",
+        "installManifestUrl": "https://github.com/fantasycalendar/FoundryVTT-ItemPiles/releases/download/3.3.4/module.json",
+        "declaredManifestUrl": "https://github.com/fantasycalendar/FoundryVTT-ItemPiles/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "13",
+          "verified": "14",
+          "maximum": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [
+            "socketlib",
+            "lib-wrapper"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/item-piles",
+          "releaseUrl": "https://github.com/fantasycalendar/FoundryVTT-ItemPiles/releases/tag/3.3.4",
+          "manifestUrl": "https://github.com/fantasycalendar/FoundryVTT-ItemPiles/releases/download/3.3.4/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "3.3.4",
+        "installManifestUrl": "https://github.com/fantasycalendar/FoundryVTT-ItemPiles/releases/download/3.3.4/module.json",
+        "declaredManifestUrl": "https://github.com/fantasycalendar/FoundryVTT-ItemPiles/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "13",
+          "verified": "14",
+          "maximum": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [
+            "socketlib",
+            "lib-wrapper"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/item-piles",
+          "releaseUrl": "https://github.com/fantasycalendar/FoundryVTT-ItemPiles/releases/tag/3.3.4",
+          "manifestUrl": "https://github.com/fantasycalendar/FoundryVTT-ItemPiles/releases/download/3.3.4/module.json",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "betterroofs",
+    "title": "Better Roofs",
+    "description": "Управляет крышами и видимостью на городских и многоэтажных картах.",
+    "category": "Карты и сцены",
+    "licenseType": "free",
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/theripper93/Better-Roofs/blob/main/LICENSE"
+    },
+    "projectUrl": "https://github.com/theripper93/Better-Roofs",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "3.0.0",
+        "installManifestUrl": "https://github.com/theripper93/Better-Roofs/releases/download/3.0.0/module.json",
+        "declaredManifestUrl": "https://github.com/theripper93/Better-Roofs/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "13",
+          "verified": "13"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [
+            "lib-wrapper"
+          ],
+          "recommended": [
+            "theripper-premium-hub"
+          ]
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/betterroofs",
+          "releaseUrl": "https://github.com/theripper93/Better-Roofs/releases/tag/3.0.0",
+          "manifestUrl": "https://github.com/theripper93/Better-Roofs/releases/download/3.0.0/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "4.0.2",
+        "installManifestUrl": "https://github.com/theripper93/Better-Roofs/releases/download/4.0.2/module.json",
+        "declaredManifestUrl": "https://github.com/theripper93/Better-Roofs/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "14",
+          "verified": "14",
+          "maximum": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [
+            "lib-wrapper"
+          ],
+          "recommended": [
+            "theripper-premium-hub"
+          ]
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/betterroofs",
+          "releaseUrl": "https://github.com/theripper93/Better-Roofs/releases/tag/4.0.2",
+          "manifestUrl": "https://github.com/theripper93/Better-Roofs/releases/download/4.0.2/module.json",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "babele",
+    "title": "Babele",
+    "description": "Переводит compendium-паки во время работы Foundry; нужен некоторым пакетам локализации.",
+    "category": "Переводы и контент",
+    "licenseType": "free",
+    "license": {
+      "name": "Не указана автором",
+      "url": null
+    },
+    "projectUrl": "https://gitlab.com/riccisi/foundryvtt-babele",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "2.9.1",
+        "installManifestUrl": "https://gitlab.com/riccisi/foundryvtt-babele/-/jobs/artifacts/2.9.1/raw/module/module.json?job=build",
+        "declaredManifestUrl": "https://gitlab.com/riccisi/foundryvtt-babele/-/jobs/artifacts/2.9.1/raw/module/module.json?job=build",
+        "compatibility": {
+          "minimum": 13,
+          "verified": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [
+            "lib-wrapper"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/babele",
+          "releaseUrl": "https://gitlab.com/riccisi/foundryvtt-babele/-/releases/2.9.1",
+          "manifestUrl": "https://gitlab.com/riccisi/foundryvtt-babele/-/jobs/artifacts/2.9.1/raw/module/module.json?job=build",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "2.9.1",
+        "installManifestUrl": "https://gitlab.com/riccisi/foundryvtt-babele/-/jobs/artifacts/2.9.1/raw/module/module.json?job=build",
+        "declaredManifestUrl": "https://gitlab.com/riccisi/foundryvtt-babele/-/jobs/artifacts/2.9.1/raw/module/module.json?job=build",
+        "compatibility": {
+          "minimum": 13,
+          "verified": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [
+            "lib-wrapper"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/babele",
+          "releaseUrl": "https://gitlab.com/riccisi/foundryvtt-babele/-/releases/2.9.1",
+          "manifestUrl": "https://gitlab.com/riccisi/foundryvtt-babele/-/jobs/artifacts/2.9.1/raw/module/module.json?job=build",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "ag-dnd-hub",
+    "title": "AG D&D Hub",
+    "description": "Хаб модулей Adventure Guys. Публичной закреплённой manifest-ссылки сейчас нет.",
+    "category": "Переводы и контент",
+    "licenseType": "free",
+    "license": {
+      "name": "Не указана автором",
+      "url": null
+    },
+    "projectUrl": "https://gitlab.com/adventure-guys/ag-dnd-hub",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": null,
+        "installManifestUrl": null,
+        "declaredManifestUrl": null,
+        "compatibility": {},
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "unavailable",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальная карточка Foundry VTT возвращает HTTP 404; опубликован только mutable main manifest, поэтому тройка catalog + release + pinned manifest не доказана.",
+        "sources": {
+          "catalogUrl": null,
+          "releaseUrl": null,
+          "manifestUrl": null,
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": null,
+        "installManifestUrl": null,
+        "declaredManifestUrl": null,
+        "compatibility": {},
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "unavailable",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальная карточка Foundry VTT возвращает HTTP 404; опубликован только mutable main manifest, поэтому тройка catalog + release + pinned manifest не доказана.",
+        "sources": {
+          "catalogUrl": null,
+          "releaseUrl": null,
+          "manifestUrl": null,
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "diceaddiction",
+    "title": "Handyfon's Dice Addiction",
+    "description": "Добавляет наборы оформления для Dice So Nice. Требует установленный Dice So Nice.",
+    "category": "Кубики",
+    "licenseType": "free",
+    "license": {
+      "name": "GPL-3.0",
+      "url": "https://github.com/Handyfon/diceaddiction/blob/main/LICENSE"
+    },
+    "projectUrl": "https://github.com/Handyfon/diceaddiction",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "14.1",
+        "installManifestUrl": "https://github.com/Handyfon/diceaddiction/releases/download/v14.1/module.json",
+        "declaredManifestUrl": "https://github.com/Handyfon/diceaddiction/releases/download/v14.1/module.json",
+        "compatibility": {
+          "minimum": "13",
+          "verified": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [
+            "dice-so-nice"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/diceaddiction",
+          "releaseUrl": "https://github.com/Handyfon/diceaddiction/releases/tag/v14.1",
+          "manifestUrl": "https://github.com/Handyfon/diceaddiction/releases/download/v14.1/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "14.1",
+        "installManifestUrl": "https://github.com/Handyfon/diceaddiction/releases/download/v14.1/module.json",
+        "declaredManifestUrl": "https://github.com/Handyfon/diceaddiction/releases/download/v14.1/module.json",
+        "compatibility": {
+          "minimum": "13",
+          "verified": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [
+            "dice-so-nice"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-19",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/diceaddiction",
+          "releaseUrl": "https://github.com/Handyfon/diceaddiction/releases/tag/v14.1",
+          "manifestUrl": "https://github.com/Handyfon/diceaddiction/releases/download/v14.1/module.json",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "itempilesdnd5e",
+    "title": "Item Piles: D&D 5e",
+    "description": "Связывает Item Piles с системой D&D5e. Ставьте вместе с основным Item Piles.",
+    "category": "Карты и сцены",
+    "licenseType": "free",
+    "license": {
+      "name": "Не указана автором",
+      "url": null
+    },
+    "projectUrl": "https://github.com/fantasycalendar/FoundryVTT-ItemPilesDND5e",
+    "tracks": [
+      {
+        "declaredManifestUrl": "https://github.com/fantasycalendar/FoundryVTT-ItemPilesDnD5e/releases/latest/download/module.json",
+        "relationships": {
+          "systems": [],
+          "required": [
+            "item-piles"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-21",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "foundryMajor": 13,
+        "moduleVersion": "1.0.8",
+        "installManifestUrl": "https://github.com/fantasycalendar/FoundryVTT-ItemPilesDnD5e/releases/download/1.0.8/module.json",
+        "compatibility": {
+          "minimum": "12",
+          "verified": "13",
+          "maximum": "13"
+        },
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/itempilesdnd5e",
+          "releaseUrl": "https://github.com/fantasycalendar/FoundryVTT-ItemPilesDnD5e/releases/tag/1.0.8",
+          "manifestUrl": "https://github.com/fantasycalendar/FoundryVTT-ItemPilesDnD5e/releases/download/1.0.8/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "declaredManifestUrl": "https://github.com/fantasycalendar/FoundryVTT-ItemPilesDnD5e/releases/latest/download/module.json",
+        "relationships": {
+          "systems": [],
+          "required": [
+            "item-piles"
+          ],
+          "recommended": []
+        },
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-21",
+        "verificationNotes": "Официальные каталог, релиз и закреплённый manifest совпадают.",
+        "foundryMajor": 14,
+        "moduleVersion": "1.1.0",
+        "installManifestUrl": "https://github.com/fantasycalendar/FoundryVTT-ItemPilesDnD5e/releases/download/1.1.0/module.json",
+        "compatibility": {
+          "minimum": "12",
+          "verified": "14",
+          "maximum": "14"
+        },
+        "sources": {
+          "catalogUrl": "https://foundryvtt.com/packages/itempilesdnd5e",
+          "releaseUrl": "https://github.com/fantasycalendar/FoundryVTT-ItemPilesDnD5e/releases/tag/1.1.0",
+          "manifestUrl": "https://github.com/fantasycalendar/FoundryVTT-ItemPilesDnD5e/releases/download/1.1.0/module.json",
+          "metadataManifestUrl": null
         }
       }
     ]

@@ -35,7 +35,7 @@
       Исполнитель: главный цикл
       Зависит от: T-01, T-02, T-03, T-04
 
-- [ ] T-06 — Закрыть reserved-IP обходы валидатора
+- [x] T-06 — Закрыть reserved-IP обходы валидатора
       Приоритет: P1 до публичного релиза
       Файлы: `scripts/validate-manifests.mjs`, `tests/validator-security.test.mjs`, `package.json`
       Делаем: дополняем IPv4/IPv6 special-use denylist и выносим проверяемые части валидатора так, чтобы тесты без сети покрывали private/reserved DNS, timeout, redirect host/limit, Content-Type и size limit.
@@ -43,7 +43,7 @@
       Исполнитель: главный цикл
       Зависит от: T-05
 
-- [ ] T-07 — Устранить дрейф контрактов
+- [x] T-07 — Устранить дрейф контрактов
       Приоритет: P2
       Файлы: `docs/pipeline/contracts.md`, `data/modules.ts`, `app/catalog-app.tsx`, `scripts/validate-manifests.mjs`, `tests/*.mjs`
       Делаем: принимаем одно решение по `copyManifest`, `validateTrack`, `finalManifestUrl` и premium `protected`: реализуем тестируемые публичные границы либо сужаем контракт до реально используемого внутреннего API.
@@ -82,3 +82,56 @@
       DoD: отсутствующий `maximum` остаётся «не указано»; лицензия есть у каждой карточки; зависимости совпадают с официальными manifest; unit/SSR-тесты, TypeScript, lint, build и live validator проходят.
       Исполнитель: главный цикл
       Зависит от: T-05
+
+## Цикл наполнения каталога
+
+- [x] T-12 — Закрыть общую схему полного каталога
+      Файлы: `data/modules.ts`, `data/catalog.mjs`, `scripts/manifest-validator.mjs`, `scripts/validate-manifests.mjs`, `tests/catalog.test.mjs`, `tests/validator-security.test.mjs`
+      Делаем: доводим track-level systems/relationships, nullable evidence sources и protected metadata до общей схемы; валидатор принимает major внутри диапазона `minimum/maximum` и не требует равенства raw `verified` выбранной версии.
+      DoD: fixtures проходят для одного manifest, обслуживающего V13 и V14; несовместимый диапазон падает с `schema:compatibility.*`; protected metadata не попадает в install allowlist; `npm run test:catalog` зелёный.
+      Исполнитель: главный цикл
+      Зависит от: вертикальный срез стадии 5
+
+- [x] T-13 — Добавить базовый и боевой набор S-08
+      Файлы: `data/modules.json`, `tests/catalog.test.mjs`
+      Делаем: добавляем девять оставшихся карточек S-08: Simple Requests, Monk's TokenBar, Health Estimate, Token Action HUD Core, Token Action HUD D&D5e, Combat Booster, Hurry Up, Disposition Initiative и Quick Insert.
+      DoD: у каждой карточки ровно два tracks; все 18 веток имеют доказанные versioned install URL, raw metadata и источники из `08-catalog-core.json`; duplicate package ID и `latest` install URL отсутствуют.
+      Исполнитель: субагент
+      Зависит от: T-12
+
+- [x] T-13A — Разрешить официальный pinned raw manifest GitHub
+      Файлы: `scripts/manifest-validator.mjs`, `tests/validator-security.test.mjs`
+      Делаем: добавляем `raw.githubusercontent.com` в точную host allowlist для versioned raw manifest и закрепляем это негативными и позитивными fixture без ослабления DNS, HTTPS и redirect-проверок.
+      DoD: mocked pinned raw URL проходит fetch policy, посторонний raw-host по-прежнему отклоняется; `npm run test:catalog` зелёный; живая проверка текущего каталога проходит 28/28.
+      Исполнитель: главный цикл
+      Зависит от: T-13
+
+- [x] T-14 — Добавить автоматизацию и анимации S-09
+      Файлы: `data/modules.json`, `tests/catalog.test.mjs`
+      Делаем: добавляем девять карточек S-09 с 15 verified tracks, Times Up V13 без публичного manifest, Times Up V14 и Active Auras V14 без совместимого релиза.
+      DoD: статусы и null-поля совпадают с `09-catalog-automation.json`; ни одна отсутствующая ветка не получает install URL; 15 verified веток проходят схему.
+      Исполнитель: субагент
+      Зависит от: T-12, T-13A
+
+- [x] T-15 — Добавить медиа, сцены и переводы S-10
+      Файлы: `data/modules.json`, `tests/catalog.test.mjs`
+      Делаем: добавляем восемь оставшихся карточек S-10: JB2A Free, PSFX Free, Monk's Active Tile Triggers, Item Piles, Better Roofs, Babele, AG D&D Hub и Dice Addiction.
+      DoD: 14 verified tracks и две unavailable ветки AG D&D Hub совпадают с `10-catalog-media.json`; JB2A Free не дублирует JB2A Patreon; mutable `main` AG D&D Hub не публикуется.
+      Исполнитель: субагент
+      Зависит от: T-12, T-14
+
+- [x] T-16 — Подготовить интерфейс к полному каталогу
+      Файлы: `app/catalog-app.tsx`, `app/globals.css`, `tests/rendered-html.test.mjs`
+      Делаем: проверяем выдачу на 33 карточках, формируем system options из выбранных tracks, различаем copy controls по accessible name и сохраняем читаемость unavailable/premium состояний на длинной странице.
+      DoD: поиск находит каждую новую карточку по title и package ID; системный фильтр использует выбранную major-ветку; каждая copy-кнопка называет модуль; SSR-тесты покрывают verified, unavailable, no-public-manifest и premium.
+      Исполнитель: главный цикл
+      Зависит от: T-13, T-14, T-15
+
+- [ ] T-17 — Доказать полноту и живую целостность каталога
+      Файлы: `tests/catalog.test.mjs`, `tests/rendered-html.test.mjs`, `docs/pipeline/catalog-candidates.md`, `docs/pipeline/brief.md`, `docs/pipeline/state.md`
+      Делаем: сверяем production IDs с инвентарём, проверяем источники и статусы всех tracks, затем запускаем полный local check и сетевой validator.
+      DoD: 32 публичных кандидата покрыты ровно один раз, дополнительная JB2A Patreon остаётся отдельной premium-карточкой; итого 33 карточки и 66 tracks; `npm run check` и `npm run validate:data` зелёные; повреждённая fixture падает с точной ошибкой.
+      Исполнитель: главный цикл
+      Зависит от: T-16
+
+После T-17 работа переходит на стадию 8 и существующую T-08: Browser QA должен проверять уже полный каталог.

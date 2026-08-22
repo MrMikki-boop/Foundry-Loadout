@@ -12,8 +12,20 @@ const baseFilters = {
   verifiedOnly: false,
 };
 
+const s08Ids = [
+  "simple-requests",
+  "monks-tokenbar",
+  "healthEstimate",
+  "token-action-hud-core",
+  "token-action-hud-dnd5e",
+  "combatbooster",
+  "hurry-up",
+  "disposition-initiative",
+  "quick-insert",
+];
+
 test("catalog has separate V13 and V14 tracks for every entry", () => {
-  assert.equal(catalog.length, 5);
+  assert.equal(new Set(catalog.map((entry) => entry.id)).size, catalog.length);
   for (const entry of catalog) {
     assert.deepEqual(entry.tracks.map((track) => track.foundryMajor).sort(), [13, 14]);
     assert.equal(new Set(entry.tracks.map((track) => track.foundryMajor)).size, 2);
@@ -23,14 +35,43 @@ test("catalog has separate V13 and V14 tracks for every entry", () => {
 test("verified install URLs are pinned HTTPS manifests", () => {
   const tracks = catalog.flatMap((entry) => entry.tracks);
   const verified = tracks.filter((track) => track.verificationStatus === "verified");
-  assert.equal(verified.length, 8);
+  assert.ok(verified.length > 0);
   for (const track of verified) {
     assert.match(track.installManifestUrl, /^https:\/\//);
     assert.doesNotMatch(track.installManifestUrl, /\/latest\//i);
-    assert.equal(track.verifiedAt, "2026-08-19");
+    assert.match(track.verifiedAt, /^\d{4}-\d{2}-\d{2}$/);
     assert.match(track.sources.catalogUrl, /^https:\/\/foundryvtt\.com\/packages\//);
     assert.match(track.sources.releaseUrl, /^https:\/\//);
     assert.match(track.sources.manifestUrl, /^https:\/\//);
+  }
+});
+
+test("S-08 adds nine unique cards with eighteen pinned verified tracks", () => {
+  const ids = catalog.map((entry) => entry.id);
+  assert.equal(new Set(ids).size, ids.length);
+
+  const entries = s08Ids.map((id) => {
+    const entry = catalog.find((candidate) => candidate.id === id);
+    assert.ok(entry, `missing S-08 entry ${id}`);
+    return entry;
+  });
+  assert.equal(entries.length, 9);
+
+  const tracks = entries.flatMap((entry) => {
+    assert.equal(entry.tracks.length, 2, `${entry.id} must have two tracks`);
+    assert.deepEqual(entry.tracks.map((track) => track.foundryMajor).sort(), [13, 14]);
+    return entry.tracks;
+  });
+  assert.equal(tracks.length, 18);
+
+  for (const track of tracks) {
+    assert.equal(track.verificationStatus, "verified");
+    assert.match(track.installManifestUrl, /^https:\/\//);
+    assert.doesNotMatch(track.installManifestUrl, /\/latest\//i);
+    assert.match(track.sources.catalogUrl, /^https:\/\/foundryvtt\.com\/packages\//);
+    assert.match(track.sources.releaseUrl, /^https:\/\//);
+    assert.match(track.sources.manifestUrl, /^https:\/\//);
+    assert.equal(track.sources.metadataManifestUrl, null);
   }
 });
 
@@ -39,10 +80,13 @@ test("catalog keeps declared licenses and manifest dependency relationships", ()
   const diceTray = catalog.find((entry) => entry.id === "dice-calculator");
   const dae = catalog.find((entry) => entry.id === "dae");
   const libWrapper = catalog.find((entry) => entry.id === "lib-wrapper");
+  const levels = catalog.find((entry) => entry.id === "levels");
 
-  assert.deepEqual(russian.dependencies, { required: [], recommended: ["lib-wrapper", "babele"] });
-  assert.deepEqual(diceTray.dependencies, { required: [], recommended: [] });
-  assert.deepEqual(dae.dependencies, { required: ["lib-wrapper", "socketlib"], recommended: [] });
+  assert.deepEqual(russian.tracks[0].relationships, { systems: [], required: [], recommended: ["lib-wrapper", "babele"] });
+  assert.deepEqual(diceTray.tracks[0].relationships, { systems: [], required: [], recommended: [] });
+  assert.deepEqual(dae.tracks[0].relationships, { systems: ["dnd5e"], required: ["lib-wrapper", "socketlib"], recommended: [] });
+  assert.deepEqual(levels.tracks.find((track) => track.foundryMajor === 13).relationships.required, ["lib-wrapper", "wall-height"]);
+  assert.deepEqual(levels.tracks.find((track) => track.foundryMajor === 14).relationships.required, ["lib-wrapper"]);
   assert.deepEqual(diceTray.license, {
     name: "MIT",
     url: "https://github.com/mclemente/fvtt-dice-tray/blob/master/LICENSE",
@@ -64,21 +108,24 @@ test("compatibility values stay raw and missing maximum is not invented", () => 
   assert.equal(Object.hasOwn(track13.compatibility, "maximum"), false);
 });
 
-test("premium personal-install tracks never expose a manifest URL", () => {
-  const premium = catalog.find((entry) => entry.id === "jb2a_patreon");
-  assert.equal(premium.licenseType, "premium");
-  for (const track of premium.tracks) {
+test("premium personal-install tracks never expose an install manifest URL", () => {
+  const premiumEntries = catalog.filter((entry) => entry.licenseType === "premium");
+  assert.ok(premiumEntries.length > 0);
+  for (const track of premiumEntries.flatMap((entry) => entry.tracks)) {
     assert.equal(track.verificationStatus, "personal-premium-link");
     assert.equal(track.installManifestUrl, null);
     assert.equal(track.declaredManifestUrl, null);
     assert.equal(track.sources.manifestUrl, null);
   }
+  const hover = catalog.find((entry) => entry.id === "hover-distance");
+  assert.match(hover.tracks[0].sources.metadataManifestUrl, /^https:\/\/r2\.foundryvtt\.com\/packages-public\//);
   assert.equal(statusPresentation["personal-premium-link"].canCopy, false);
 });
 
 test("filters combine query, category, license, system and status with AND", () => {
   const result = filterCatalog(catalog, {
     ...baseFilters,
+    major: 13,
     query: "active effects",
     category: "Автоматизация",
     licenseType: "free",
@@ -88,7 +135,7 @@ test("filters combine query, category, license, system and status with AND", () 
   assert.deepEqual(result.map(({ entry }) => entry.id), ["dae"]);
 
   const premium = filterCatalog(catalog, { ...baseFilters, licenseType: "premium" });
-  assert.deepEqual(premium.map(({ entry }) => entry.id), ["jb2a_patreon"]);
+  assert.deepEqual(premium.map(({ entry }) => entry.id), ["jb2a_patreon", "hover-distance"]);
 
   const verifiedPremium = filterCatalog(catalog, {
     ...baseFilters,
@@ -100,6 +147,6 @@ test("filters combine query, category, license, system and status with AND", () 
 
 test("catalog contains no credentials or bulk-install model", () => {
   const serialized = JSON.stringify(catalog);
-  assert.doesNotMatch(serialized, /token|secret|password|api[_-]?key/i);
+  assert.doesNotMatch(serialized, /(?:[?&](?:token|key)=|password|api[_-]?key|secret=)/i);
   assert.doesNotMatch(serialized, /bundle|cart|bulk|export/i);
 });

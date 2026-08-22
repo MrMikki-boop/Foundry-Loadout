@@ -1,11 +1,11 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { filterCatalog, modules, statusPresentation, type FoundryMajor, type ModuleTrack } from "@/data/modules";
 
 const DEFAULT_FOUNDRY_MAJOR: FoundryMajor = 14;
 const categories = [...new Set(modules.map((entry) => entry.category))].sort((a, b) => a.localeCompare(b, "ru"));
-const systems = [...new Set(modules.flatMap((entry) => entry.systems))].sort((a, b) => a.localeCompare(b, "ru"));
+const systems = [...new Set(modules.flatMap((entry) => entry.tracks.flatMap((track) => track.relationships.systems)))].sort((a, b) => a.localeCompare(b, "ru"));
 
 function resultLabel(count: number) {
   if (count % 10 === 1 && count % 100 !== 11) return `${count} модуль`;
@@ -13,13 +13,15 @@ function resultLabel(count: number) {
   return `${count} модулей`;
 }
 
-function compatibilityValue(track: ModuleTrack, field: keyof ModuleTrack["compatibility"]) {
-  return track.compatibility[field] ?? "не указано";
-}
-
-function hasCompatibility(track: ModuleTrack) {
+function compatibilityLabel(track: ModuleTrack) {
   const { minimum, verified, maximum } = track.compatibility;
-  return Boolean(minimum || verified || maximum);
+  if (!minimum && !verified && !maximum) return `Автор не указал публичный диапазон для V${track.foundryMajor}.`;
+
+  return [
+    `minimum: ${minimum ?? "не указано"}`,
+    `verified: ${verified ?? "не указано"}`,
+    `maximum: ${maximum ?? "не указано"}`,
+  ].join(" · ");
 }
 
 export function CatalogApp() {
@@ -30,7 +32,6 @@ export function CatalogApp() {
   const [system, setSystem] = useState<string | null>(null);
   const [verifiedOnly, setVerifiedOnly] = useState(true);
   const [notice, setNotice] = useState("");
-  const urlFields = useRef<Record<string, HTMLInputElement | null>>({});
 
   const results = useMemo(
     () => filterCatalog(modules, { major, query, category, licenseType, system, verifiedOnly }),
@@ -45,16 +46,13 @@ export function CatalogApp() {
     setVerifiedOnly(true);
   }
 
-  async function copyManifest(key: string, url: string) {
+  async function copyManifest(url: string) {
     try {
       if (!navigator.clipboard?.writeText) throw new Error("clipboard:unavailable");
       await navigator.clipboard.writeText(url);
       setNotice("Manifest-ссылка скопирована");
     } catch {
-      const field = urlFields.current[key];
-      field?.focus();
-      field?.select();
-      setNotice("Не получилось скопировать автоматически. Ссылка выделена, скопируйте её вручную.");
+      setNotice("Не получилось скопировать ссылку. Попробуйте ещё раз.");
     }
   }
 
@@ -123,6 +121,7 @@ export function CatalogApp() {
             <label htmlFor="system-filter">Игровая система</label>
             <select id="system-filter" value={system ?? ""} onChange={(event) => setSystem(event.currentTarget.value || null)}>
               <option value="">Все системы</option>
+              <option value="__system-agnostic__">Любая система</option>
               {systems.map((value) => <option value={value} key={value}>{value}</option>)}
             </select>
           </div>
@@ -144,7 +143,6 @@ export function CatalogApp() {
         {results.length ? (
         <div className="catalog-grid">
           {results.map(({ entry, track }) => {
-            const key = `${entry.id}-${major}`;
             const url = track.installManifestUrl;
             const presentation = statusPresentation[track.verificationStatus];
             return (
@@ -167,22 +165,16 @@ export function CatalogApp() {
                 <p className="module-description">{entry.description}</p>
                 <dl className="facts">
                   <div>
-                    <dt>Совместимость Foundry VTT из manifest</dt>
-                    {hasCompatibility(track) ? (
-                      <dd className="compatibility-value">
-                        <span><span>minimum</span><strong>{compatibilityValue(track, "minimum")}</strong></span>
-                        <span><span>verified</span><strong>{compatibilityValue(track, "verified")}</strong></span>
-                        <span><span>maximum</span><strong>{compatibilityValue(track, "maximum")}</strong></span>
-                      </dd>
-                    ) : <dd>Автор не указал публичный диапазон для V{track.foundryMajor}.</dd>}
+                    <dt>Foundry VTT {track.foundryMajor}</dt>
+                    <dd className="compatibility-value">{compatibilityLabel(track)}</dd>
                   </div>
-                  <div><dt>Системы</dt><dd>{entry.systems.join(", ")}</dd></div>
+                  <div><dt>Системы</dt><dd>{track.relationships.systems.length ? track.relationships.systems.join(", ") : "Любая система"}</dd></div>
                   <div>
                     <dt>Дополнения и зависимости</dt>
                     <dd className="dependency-list">
-                      <span>{entry.dependencies.required.length ? `Обязательные: ${entry.dependencies.required.join(", ")}` : "Обязательных нет"}</span>
-                      {entry.dependencies.recommended.length ? <span>Рекомендуемые: {entry.dependencies.recommended.join(", ")}</span> : null}
-                      {entry.dependencies.required.length || entry.dependencies.recommended.length ? (
+                      <span>{track.relationships.required.length ? `Обязательные: ${track.relationships.required.join(", ")}` : "Обязательных нет"}</span>
+                      {track.relationships.recommended.length ? <span>Рекомендуемые: {track.relationships.recommended.join(", ")}</span> : null}
+                      {track.relationships.required.length || track.relationships.recommended.length ? (
                         <small>При установке Foundry VTT предложит добавить их вместе с модулем.</small>
                       ) : null}
                     </dd>
@@ -199,11 +191,8 @@ export function CatalogApp() {
 
                 {presentation.canCopy && url ? (
                 <div className="manifest-block">
-                  <label htmlFor={`manifest-${key}`}>Manifest URL</label>
-                  <div className="copy-row">
-                    <input id={`manifest-${key}`} ref={(element) => { urlFields.current[key] = element; }} className="manifest-url" value={url} readOnly onFocus={(event) => event.currentTarget.select()} spellCheck={false} />
-                    <button type="button" className="copy-button" onClick={() => copyManifest(key, url)}>Скопировать manifest</button>
-                  </div>
+                  <span className="manifest-label">Manifest URL</span>
+                  <button type="button" className="manifest-copy" aria-label={`Скопировать manifest: ${entry.title}`} onClick={() => copyManifest(url)}>{url}</button>
                 </div>
                 ) : (
                   <div className="access-notice" role="note">

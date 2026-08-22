@@ -1,12 +1,12 @@
 # Состояние пайплайна
 
 Проект: Foundry Loadout
-Обновлено: 2026-08-19
+Обновлено: 2026-08-21
 
-Текущая стадия: **7 — пользовательская правка T-11 завершена**
-Ворота: T-11 проверена; ранее найденные T-06…T-10 остаются открыты
+Текущая стадия: **7 — каталог наполнен**
+Ворота: 34 карточки и 68 tracks; локальный `npm run check` зелёный
 
-Следующее действие: после разрешения пользователя выполнить T-06/T-07 и повторить стадию 8 свежим аудитором; к релизу пока не переходить
+Следующее действие: повторить сетевую проверку при стабильном DNS и провести Browser QA, когда локальный preview доступен встроенному браузеру
 
 ## История стадий
 
@@ -21,6 +21,49 @@
 - 8 audit — 2026-08-19 (чистый check и 8/8 manifest прошли; AC-4 не закрыт из-за reserved-IP denylist, AC-9 — из-за Browser blocker)
 - 9 feedback — 2026-08-19 (находки возвращены в brief/decisions/tasks; заведены T-06…T-10, следующий цикл начинается со стадии 7)
 - 7 implementation, пользовательская правка — 2026-08-19 (T-11: raw compatibility, лицензии и зависимости из manifest)
+- 7 implementation, повторный цикл — 2026-08-19 (T-06/T-07: полный special-use denylist, security fixtures, экспортируемый validateTrack и синхронизация контрактов; compatibility возвращена в компактную строку)
+- 8 audit, повторный цикл — 2026-08-19 (Browser подключён; критичных дефектов нет, AC-1/2/4/6/7/8 выполнены, AC-3 частично непроверяем, AC-5/9 не выполнены, AC-10 не проверяем)
+- 1 idea, цикл наполнения — 2026-08-19 (32 уникальных публичных кандидата: 4 уже в каталоге, 28 требуют исследования; грязные ссылки признаны подсказками)
+- 2 plan + criteria, цикл наполнения — 2026-08-19 (приняты AC-11…AC-17: полнота, доказательства V13/V14, metadata, безопасность, полный UI и validator)
+- 3 risk spikes, цикл наполнения — 2026-08-19 (28 новых кандидатов, 56 tracks: 49 verified, 2 protected premium, 1 no-public-manifest, 4 unavailable; S-08…S-11)
+- 4 contracts, цикл наполнения — 2026-08-19 (systems/dependencies перенесены на track, raw compatibility допускает string/number, protected metadata отделён от install URL)
+- 5 vertical slice, цикл наполнения — 2026-08-19 (Levels и Hover Distance добавлены; семь карточек, 10/10 live manifests, Pages preview HTTP 200; Browser runtime недоступен)
+- 6 tasks, цикл наполнения — 2026-08-19 (T-12…T-17: схема, три evidence-пакета, масштаб UI и финальная целостность)
+- 7 implementation, цикл наполнения — 2026-08-19 (T-12: major проверяется по minimum/maximum, raw verified не считается верхней границей, protected metadata исключён из install allowlist)
+- 7 implementation, цикл наполнения — 2026-08-19 (T-13: девять карточек S-08 добавлены, 18/18 tracks совпадают с evidence; живая проверка 26/28 выявила отдельную allowlist-задачу T-13A)
+
+## Цель цикла наполнения
+
+Добавить модули из `foundry-modules.md` и грязных данных без догадок о совместимости. Нормализованный инвентарь хранится в `docs/pipeline/catalog-candidates.md`; каждый кандидат должен получить проверенные tracks либо записанную причину исключения.
+
+## Открытые интеграционные находки после T-13
+
+- Живой валидатор подтвердил 26 из 28 текущих install tracks. Обе ветки Monk's TokenBar остановлены до запроса сетью с `redirect:host-not-allowed (raw.githubusercontent.com)`; T-13A добавляет этот официальный versioned host в точную allowlist и тестирует ограничение.
+- `npm run check` проходит lint, TypeScript, 25 catalog/security tests и Pages build, затем один rendered HTML test ожидает старые 5 copy controls вместо текущих 14. Обновление масштабных SSR-ожиданий уже входит в T-16.
+
+## Ворота после стадий 3–4
+
+- Все 28 новых кандидатов имеют первичные evidence-артефакты S-08…S-11; вместе с четырьмя существующими карточками покрыты 32 публичных кандидата.
+- Обычные подтверждённые ветки: 49; Hover Distance: 2 protected premium metadata tracks без install URL; Times Up V13: `no-public-manifest`; Times Up V14, Active Auras V14 и обе ветки AG D&D Hub: `unavailable`.
+- `latest`, mutable branch URL, персональные ключи и токенизированные ссылки не допускаются как install URL.
+- Track-level systems/relationships обязательны: общая зависимость карточки не может точно описать разные major-релизы.
+- Следующая пара стадий должна доказать новую форму данных на минимальном полном срезе и подготовить атомарные задачи; массовое изменение `data/modules.json` начинается только после этих ворот.
+
+## Проверка повторной реализации
+
+- Compatibility снова показана одной компактной моноширинной строкой; `minimum`, `verified` и `maximum` остаются raw-значениями manifest, отсутствующее значение не вычисляется.
+- `npm run check` пройден в рабочей копии: lint, TypeScript, 18 catalog/security tests, Pages build и 6 rendered/export tests.
+- Негативные тесты без сети подтверждают private/reserved DNS, `240.0.0.1`, `255.255.255.255`, `192.88.99.1`, timeout, redirect host/limit, Content-Type и size limit.
+- `npm run validate:data` с разрешённой сетью прошёл 8/8 закреплённых manifest.
+- `validateTrack` экспортируется и проверяется через `ManifestSnapshot`; обещанные, но отсутствовавшие `copyManifest`, `finalManifestUrl` и локальный premium `protected` удалены из публичного контракта с записью решения.
+
+## Результат повторного независимого аудита
+
+- Критических дефектов нет. Полный отчёт: `docs/pipeline/audit.md`.
+- Browser в одном tab подтвердил V13/V14, поиск и все фильтры, empty/reset, точное копирование одной ссылки, premium без install URL и отсутствие горизонтального overflow на 375/768/1024/1440 px.
+- AC-5 не выполнен: copy controls не различают карточки по accessible name, часть ссылок меньше принятой цели 44×44 px; keyboard activation и 200% zoom не удалось достоверно прогнать на доступной Browser surface.
+- AC-3 выполнен частично: Clipboard success проверен, принудительный rejected/absent Clipboard API нельзя получить без мутации страницы или browser permission.
+- Найден оставшийся дрейф конфигурации: `NEXT_PUBLIC_SITE_NAME` заявлен контрактом, но metadata пока захардкожена.
 
 ## Проверка T-11
 

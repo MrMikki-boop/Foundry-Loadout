@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import catalog from "../data/modules.json" with { type: "json" };
 
 async function render() {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
@@ -22,6 +23,7 @@ test("server renders the Foundry V13/V14 catalog", async () => {
   assert.match(html, /Russian Translation/);
   assert.match(html, /Dice Tray/);
   assert.match(html, /Dynamic Active Effects/);
+  assert.match(html, /Levels/);
   assert.match(html, /Manifest URL/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Building your site/i);
 });
@@ -46,17 +48,18 @@ test("page exposes labelled search and catalog filters", async () => {
 test("verified cards render complete metadata and one copy action per manifest", async () => {
   const html = await (await render()).text();
   assert.match(html, /Бесплатный/);
-  assert.match(html, /Совместимость Foundry VTT из manifest/);
-  assert.match(html, /minimum<\/span><strong>0\.6\.5<\/strong>/);
-  assert.match(html, /verified<\/span><strong>14<\/strong>/);
-  assert.match(html, /maximum<\/span><strong>не указано<\/strong>/);
+  assert.match(html, /Foundry VTT(?:\s|<!-- -->)*14/);
+  assert.match(html, /minimum: 0\.6\.5/);
+  assert.match(html, /verified: 14/);
+  assert.match(html, /maximum: не указано/);
   assert.match(html, /Обязательные: lib-wrapper, socketlib/);
   assert.match(html, /Рекомендуемые: (?:<!-- -->)?lib-wrapper, babele/);
   assert.match(html, /Foundry VTT предложит добавить их вместе с модулем/);
   assert.match(html, />MIT(?:<!-- -->)? <span aria-hidden="true">↗<\/span><\/a>/);
   assert.match(html, />LGPL-3\.0(?:<!-- -->)? <span aria-hidden="true">↗<\/span><\/a>/);
   assert.match(html, /Не указана автором/);
-  assert.equal((html.match(/>Скопировать manifest<\/button>/g) ?? []).length, 4);
-  assert.equal((html.match(/class="manifest-url"/g) ?? []).length, 4);
+  const verifiedV14 = catalog.filter((entry) => entry.tracks.some((track) => track.foundryMajor === 14 && track.verificationStatus === "verified")).length;
+  assert.equal((html.match(/class="manifest-copy"/g) ?? []).length, verifiedV14);
+  assert.equal((html.match(/aria-label="Скопировать manifest: /g) ?? []).length, verifiedV14);
   assert.doesNotMatch(html, /Публичная ссылка недоступна/);
 });
