@@ -41,6 +41,7 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # Provider-local state
+/.openai/
 /.vercel/
 /.agents/
 /.codex/
