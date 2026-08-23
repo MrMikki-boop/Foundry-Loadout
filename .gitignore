@@ -9,16 +9,15 @@
 !.yarn/versions
 
 # Build output and tool caches
-/.next/
-/.vinext/
-/.wrangler/
-/dist/
 /out/
 /coverage/
 /outputs/
 /work/
 /.cache/
-.eslintcache
+/.next/
+/.vinext/
+/.wrangler/
+/dist/
 *.tsbuildinfo
 
 # Local environment and secrets
@@ -40,7 +39,7 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# Provider-local state
+# Provider-local state and process notes
 /.openai/
 /.vercel/
 /.agents/

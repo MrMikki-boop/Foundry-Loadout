@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0d1117" />
+    <meta
+      name="description"
+      content="Проверенные manifest-ссылки модулей для Foundry Virtual Tabletop 13 и 14."
+    />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Foundry Loadout — manifest-ссылки для Foundry VTT</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#catalog">Перейти к каталогу</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#catalog" aria-label="Foundry Loadout, к каталогу">
+          <span class="brand-mark" aria-hidden="true">FL</span>
+          <span>Foundry Loadout</span>
+        </a>
+        <a class="header-link" href="#install">Как установить</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">Справочник manifest-ссылок</p>
+        <h1 id="page-title">Найдите модуль. Скопируйте manifest.</h1>
+        <p class="intro-copy">
+          Выберите версию Foundry VTT. Каталог покажет совместимость, зависимости
+          и закреплённую ссылку для ручной установки.
+        </p>
+      </section>
+
+      <section class="catalog-shell" id="catalog" aria-labelledby="catalog-title">
+        <form class="catalog-controls" id="catalog-controls" role="search">
+          <div class="search-control">
+            <label for="catalog-search">Поиск по каталогу</label>
+            <input
+              id="catalog-search"
+              type="search"
+              placeholder="Название, package ID или назначение"
+              autocomplete="off"
+            />
+          </div>
+
+          <fieldset class="version-picker">
+            <legend>Версия Foundry VTT</legend>
+            <div class="segmented-control">
+              <label>
+                <input type="radio" name="foundry-major" value="13" />
+                <span>V13</span>
+              </label>
+              <label>
+                <input type="radio" name="foundry-major" value="14" checked />
+                <span>V14</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <details class="filter-panel">
+            <summary>
+              Дополнительные фильтры
+              <span class="filter-count" id="filter-count" hidden></span>
+            </summary>
+            <div class="filter-grid">
+              <div class="filter-field">
+                <label for="category-filter">Категория</label>
+                <select id="category-filter">
+                  <option value="">Все категории</option>
+                </select>
+              </div>
+              <div class="filter-field">
+                <label for="license-filter">Доступ</label>
+                <select id="license-filter">
+                  <option value="all">Любой</option>
+                  <option value="free">Бесплатные</option>
+                  <option value="premium">Премиальные</option>
+                </select>
+              </div>
+              <div class="filter-field">
+                <label for="system-filter">Игровая система</label>
+                <select id="system-filter">
+                  <option value="">Все системы</option>
+                  <option value="__system-agnostic__">Любая система</option>
+                </select>
+              </div>
+              <label class="verified-filter">
+                <input id="verified-filter" type="checkbox" />
+                <span>Только проверенные</span>
+              </label>
+              <button class="secondary-button" type="button" data-reset>Сбросить</button>
+            </div>
+          </details>
+        </form>
+
+        <div class="results-heading">
+          <div>
+            <p class="eyebrow">Каталог</p>
+            <h2 id="catalog-title">Модули для Foundry VTT <span id="selected-major">14</span></h2>
+          </div>
+          <p class="result-count" id="result-count" aria-live="polite"></p>
+        </div>
+
+        <div class="catalog-grid" id="catalog-list"></div>
+      </section>
+
+      <section class="install-section" id="install" aria-labelledby="install-title">
+        <div>
+          <p class="eyebrow">Ручная установка</p>
+          <h2 id="install-title">Куда вставить ссылку</h2>
+          <p>
+            Сначала сделайте резервную копию мира. Модуль устанавливается в приложении
+            Foundry VTT, а включается уже внутри нужного мира.
+          </p>
+        </div>
+        <ol class="install-steps">
+          <li><span>1</span><p>Нажмите <strong>Копировать manifest</strong> у нужного модуля.</p></li>
+          <li><span>2</span><p>Откройте Foundry VTT и перейдите в <strong>Дополнения → Установить модуль</strong>.</p></li>
+          <li><span>3</span><p>Вставьте ссылку в поле <strong>Manifest URL</strong> и нажмите <strong>Установить</strong>.</p></li>
+          <li><span>4</span><p>После загрузки включите модуль внутри нужного мира.</p></li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Независимый справочник. Foundry Loadout не связан с Foundry Gaming LLC и не
+        одобрен ею. Foundry Virtual Tabletop является торговой маркой Foundry Gaming LLC.
+      </p>
+    </footer>
+
+    <div class="visually-hidden" id="announcer" role="status" aria-live="polite" aria-atomic="true"></div>
+    <noscript>Для поиска, фильтров и копирования ссылок требуется JavaScript.</noscript>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
