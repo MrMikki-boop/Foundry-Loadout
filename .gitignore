@@ -42,3 +42,7 @@ yarn-error.log*
 
 # Provider-local state
 /.vercel/
+/.agents/
+/.codex/
+/docs/pipeline/
+/design-system/
