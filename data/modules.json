@@ -41,7 +41,7 @@
       },
       {
         "foundryMajor": 14,
-        "moduleVersion": "14.366.4",
+        "moduleVersion": "14.366.7",
         "installManifestUrl": "https://github.com/phenomen/foundry-vtt-ru/releases/download/release-v14/module.json",
         "declaredManifestUrl": null,
         "compatibility": {
@@ -58,7 +58,7 @@
           ]
         },
         "verificationStatus": "verified",
-        "verifiedAt": "2026-08-19",
+        "verifiedAt": "2026-08-23",
         "verificationNotes": "Закреплённая ветка release-v14.",
         "sources": {
           "catalogUrl": "https://foundryvtt.com/packages/ru-ru",
@@ -184,9 +184,7 @@
           "maximum": "14.999"
         },
         "relationships": {
-          "systems": [
-            "dnd5e"
-          ],
+          "systems": [],
           "required": [
             "lib-wrapper",
             "socketlib"
@@ -194,7 +192,7 @@
           "recommended": []
         },
         "verificationStatus": "verified",
-        "verifiedAt": "2026-08-19",
+        "verifiedAt": "2026-08-23",
         "verificationNotes": "Manifest требует lib-wrapper и socketlib.",
         "sources": {
           "catalogUrl": "https://foundryvtt.com/packages/dae",
@@ -738,14 +736,16 @@
           "verified": "14.360"
         },
         "relationships": {
-          "systems": [],
+          "systems": [
+            "dnd5e"
+          ],
           "required": [
             "token-action-hud-core"
           ],
           "recommended": []
         },
         "verificationStatus": "verified",
-        "verifiedAt": "2026-08-19",
+        "verifiedAt": "2026-08-23",
         "verificationNotes": "Manifest требует Token Action HUD Core и dnd5e от 5.1.0 до 5.99.",
         "sources": {
           "catalogUrl": "https://foundryvtt.com/packages/token-action-hud-dnd5e",
