@@ -39,8 +39,8 @@ export default { async fetch(request) {
     const base = `${url.origin}/install/${encodeLoadout(value)}/${rev}`;
     const plan = loadoutPlan(value);
     const manifest = {
-      id: `foundry-loadout-${rev}`, title: `Foundry Loadout · V${value.major} · ${plan.length} modules`,
-      description: 'Набор модулей Foundry Loadout. Подтвердите установку зависимостей. Настройки мира не изменяются.',
+      id: `foundry-loadout-${rev}`, title: `Foundry Loadout · установщик сборки · V${value.major} · ${plan.length}`,
+      description: 'Технический модуль со списком сборки. Подтвердите установку зависимостей — это выбранные на сайте модули. Проверьте их наличие в разделе «Дополнения», после чего этот технический модуль можно удалить. Включать его в мире не нужно. Если зависимости не установились, скопируйте их отдельные ссылки на сайте.',
       version: '1.0.0', compatibility: {minimum: String(value.major), maximum: String(value.major)},
       manifest: `${base}/module.json`, download: `${base}/module.zip`,
       relationships: {

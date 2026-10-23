@@ -57,6 +57,7 @@ function show() {
     ${imported ? '<button class="primary-button" data-build-merge>Добавить к моей сборке</button>' : ''}
     <div class="build-feedback" role="status">${escapeHtml(notice)} ${!imported && undo ? '<button class="text-button" data-build-undo>Отменить</button>' : ''}</div>
     ${plan.length ? `<div class="build-actions build-main-actions"><button class="primary-button" data-build-install disabled>Копировать ссылку для Foundry</button><button class="secondary-button" data-build-share>Поделиться сборкой</button></div><p id="build-install-message" role="status">Проверяем доступность установки…</p>` : ''}
+    ${plan.length ? `<section class="build-install" aria-label="Установка сборки"><strong>Одна ссылка — через технический модуль</strong><ol><li>Вставьте ссылку в Manifest URL в разделе «Дополнения → Установить модуль».</li><li>Foundry установит <strong>Foundry Loadout</strong> — пустой модуль со списком вашей сборки. Подтвердите предложенную установку зависимостей: это выбранные ниже модули и нужные им библиотеки.</li><li>Дождитесь загрузки и проверьте, что все модули из списка появились в «Дополнениях». После этого технический Foundry Loadout можно удалить. Включать его в мире не нужно.</li></ol><details><summary>Установился только Foundry Loadout?</summary><p>Уже установленные модули могут быть пропущены. Если нужных модулей нет и окно зависимостей не появилось или установка завершилась ошибкой, используйте кнопки «Ссылка» ниже. Установленная несовместимая версия может потребовать ручного обновления. Сайт не видит результат установки в Foundry.</p></details></section>` : ''}
     ${section('Вы выбрали', selected)}${section('Нужны для работы', dependencies)}
     ${!plan.length ? '<div class="build-empty"><strong>Начните с того, что нужно вашей игре</strong><p>Добавляйте отдельные модули из каталога или готовый набор целиком.</p><button class="primary-button" data-build-close>Выбрать модули</button></div>' : ''}
     ${plan.length ? `<div class="build-footer"><button class="secondary-button" data-build-close>Продолжить выбор</button><p class="install-note">«Поделиться сборкой» открывает состав на сайте. Для ручной установки сначала установите зависимости из раздела «Нужны для работы», затем выбранные модули.</p></div>` : ''}
@@ -80,13 +81,13 @@ async function prepareInstall(value, turn) {
     if (manifest.manifest !== url.href) throw new Error('Сервис вернул некорректную ссылку.');
     if (turn !== generation) return;
     button.dataset.url = url.href; button.disabled = false; button.textContent = 'Копировать ссылку для Foundry';
-    message.textContent = url.protocol === 'http:' ? 'Локальная проверка: эта ссылка работает только на этом компьютере. Публичный сервис ещё не подключён.' : 'Вставьте ссылку в Manifest URL в Foundry и подтвердите установку зависимостей. Затем включите модули в мире. Уже установленные несовместимые версии могут потребовать ручной замены.';
+    message.textContent = url.protocol === 'http:' ? 'Локальная проверка: эта ссылка работает только на этом компьютере.' : 'Ссылка готова. Она устанавливает технический Foundry Loadout, через который Foundry предлагает загрузить состав сборки. Порядок действий — ниже.';
   } catch (error) { if (turn === generation) { message.textContent = error.name === 'TypeError' || error.name === 'TimeoutError' ? 'Не удалось связаться с сервисом установки. Проверьте подключение и попробуйте открыть сборку позже. Отдельные ссылки модулей доступны ниже.' : error.message; } }
 }
 async function copy(url, button) {
   const field = dialog.querySelector('#build-link');
   field.hidden = true; field.querySelector('input').value = url;
-  try { await navigator.clipboard.writeText(url); if (button) { const label = button.textContent; button.textContent = 'Скопировано ✓'; setTimeout(() => { if (button.isConnected) button.textContent = label; }, 2000); } dialog.querySelector('#build-message').textContent = button?.hasAttribute('data-build-share') ? 'Ссылка на состав скопирована. Отправьте её другому человеку.' : 'Ссылка модуля скопирована. Вставьте её в Manifest URL в Foundry.'; } 
+  try { await navigator.clipboard.writeText(url); if (button) { const label = button.textContent; button.textContent = 'Скопировано ✓'; setTimeout(() => { if (button.isConnected) button.textContent = label; }, 2000); } dialog.querySelector('#build-message').textContent = button?.hasAttribute('data-build-share') ? 'Ссылка на состав скопирована. Отправьте её другому человеку.' : button?.hasAttribute('data-build-install') ? 'Ссылка сборки скопирована. После установки Foundry Loadout подтвердите загрузку зависимостей.' : 'Ссылка модуля скопирована. Вставьте её в Manifest URL в Foundry.'; } 
   catch { field.hidden = false; field.querySelector('input').focus(); field.querySelector('input').select(); dialog.querySelector('#build-message').textContent = 'Скопируйте выделенную ссылку вручную.'; }
 }
 dialog.addEventListener('click', event => {
@@ -113,8 +114,10 @@ dialog.addEventListener('click', event => {
   }
   if (event.target.closest('[data-build-share]')) return copy(shareUrl(imported ?? current()), event.target.closest('[data-build-share]'));
   const install = event.target.closest('[data-build-install]');
-  if (install?.dataset.url) copy(install.dataset.url);
+  if (install?.dataset.url) copy(install.dataset.url, install);
 });
+
+
 document.addEventListener('click', event => {
   const add = event.target.closest('[data-add-module]');
   if (add) {
