@@ -1,7 +1,7 @@
 [
   {
     "id": "ru-ru",
-    "title": "Russian Translation",
+    "title": "❄️ Russian Translation | Русский перевод",
     "description": "Переводит интерфейс Foundry Virtual Tabletop и поддерживаемые системы на русский. После установки включите модуль в мире и выберите язык в настройках.",
     "category": "Локализация",
     "licenseType": "free",
@@ -15,7 +15,7 @@
         "foundryMajor": 13,
         "moduleVersion": "13.351.54",
         "installManifestUrl": "https://github.com/phenomen/foundry-vtt-ru/releases/download/release-v13/module.json",
-        "declaredManifestUrl": null,
+        "declaredManifestUrl": "https://github.com/phenomen/foundry-vtt-ru/releases/download/release-v13/module.json",
         "compatibility": {
           "minimum": "13",
           "verified": "13",
@@ -29,9 +29,9 @@
             "babele"
           ]
         },
-        "verificationStatus": "verified",
-        "verifiedAt": "2026-08-19",
-        "verificationNotes": "Закреплённая ветка release-v13.",
+        "verificationStatus": "public-manifest",
+        "verifiedAt": "2026-10-22",
+        "verificationNotes": "Обновляемый релиз автора для выбранной версии Foundry. Манифест проверен 22 октября 2026.",
         "sources": {
           "catalogUrl": "https://foundryvtt.com/packages/ru-ru",
           "releaseUrl": "https://github.com/phenomen/foundry-vtt-ru/releases/tag/release-v13",
@@ -41,9 +41,9 @@
       },
       {
         "foundryMajor": 14,
-        "moduleVersion": "14.366.7",
+        "moduleVersion": "14.369.2",
         "installManifestUrl": "https://github.com/phenomen/foundry-vtt-ru/releases/download/release-v14/module.json",
-        "declaredManifestUrl": null,
+        "declaredManifestUrl": "https://github.com/phenomen/foundry-vtt-ru/releases/download/release-v14/module.json",
         "compatibility": {
           "minimum": "14",
           "verified": "14",
@@ -57,9 +57,9 @@
             "babele"
           ]
         },
-        "verificationStatus": "verified",
-        "verifiedAt": "2026-08-23",
-        "verificationNotes": "Закреплённая ветка release-v14.",
+        "verificationStatus": "public-manifest",
+        "verifiedAt": "2026-10-22",
+        "verificationNotes": "Обновляемый релиз автора для выбранной версии Foundry. Манифест проверен 22 октября 2026.",
         "sources": {
           "catalogUrl": "https://foundryvtt.com/packages/ru-ru",
           "releaseUrl": "https://github.com/phenomen/foundry-vtt-ru/releases/tag/release-v14",
@@ -67,6 +67,12 @@
           "metadataManifestUrl": null
         }
       }
+    ],
+    "aliases": [
+      "Russian Translation",
+      "русификатор",
+      "русский язык",
+      "перевод Foundry"
     ]
   },
   {
@@ -133,7 +139,7 @@
   },
   {
     "id": "dae",
-    "title": "Dynamic Active Effects",
+    "title": "Dynamic effects using Active Effects (DAE)",
     "description": "Расширяет Active Effects в dnd5e: связывает эффекты с предметами, бонусами и изменениями характеристик. Перед включением в старом мире сделайте резервную копию.",
     "category": "Автоматизация",
     "licenseType": "free",
@@ -201,6 +207,9 @@
           "metadataManifestUrl": null
         }
       }
+    ],
+    "aliases": [
+      "Dynamic Active Effects"
     ]
   },
   {
@@ -267,7 +276,7 @@
   },
   {
     "id": "jb2a_patreon",
-    "title": "JB2A Patreon Collection",
+    "title": "JB2A - Patreon Complete Collection",
     "description": "Расширенная библиотека анимаций JB2A для подписчиков. Ссылку на установку выдаёт сам автор после подтверждения доступа, поэтому публичного manifest здесь нет.",
     "category": "Премиальные модули",
     "licenseType": "premium",
@@ -319,6 +328,9 @@
           "metadataManifestUrl": null
         }
       }
+    ],
+    "aliases": [
+      "JB2A Patreon Collection"
     ]
   },
   {
@@ -786,7 +798,7 @@
   },
   {
     "id": "combatbooster",
-    "title": "Combat Booster",
+    "title": "Combat Booster: Turn Marker, Recent Actions and more",
     "description": "Добавляет метку текущего хода, список последних действий и уведомления о начале хода. Последние действия работают только в dnd5e.",
     "category": "Бой и интерфейс",
     "licenseType": "free",
@@ -844,6 +856,9 @@
           "metadataManifestUrl": null
         }
       }
+    ],
+    "aliases": [
+      "Combat Booster"
     ]
   },
   {
@@ -972,7 +987,7 @@
   },
   {
     "id": "quick-insert",
-    "title": "Quick Insert",
+    "title": "Quick Insert - Search Widget",
     "description": "Открывает поиск по актёрам, предметам, заклинаниям, сценам и командам по Ctrl+Space. Результат можно сразу вставить или перетащить в нужное место.",
     "category": "Инструменты ведущего",
     "licenseType": "free",
@@ -1030,6 +1045,9 @@
           "metadataManifestUrl": null
         }
       }
+    ],
+    "aliases": [
+      "Quick Insert"
     ]
   },
   {
@@ -1301,7 +1319,7 @@
   },
   {
     "id": "ATL",
-    "title": "Active Token Effects / ATL",
+    "title": "Active Token Effects",
     "description": "Позволяет активным эффектам менять свет и параметры токена.",
     "category": "Автоматизация D&D5e",
     "licenseType": "free",
@@ -1359,6 +1377,9 @@
           "metadataManifestUrl": null
         }
       }
+    ],
+    "aliases": [
+      "Active Token Effects / ATL"
     ]
   },
   {
@@ -1631,7 +1652,7 @@
   },
   {
     "id": "JB2A_DnD5e",
-    "title": "JB2A Free",
+    "title": "JB2A - Jules and Ben's Animated Assets - Free Content",
     "description": "Бесплатная библиотека анимаций для заклинаний, атак и эффектов.",
     "category": "Анимации и звук",
     "licenseType": "free",
@@ -1689,11 +1710,14 @@
           "metadataManifestUrl": null
         }
       }
+    ],
+    "aliases": [
+      "JB2A Free"
     ]
   },
   {
     "id": "psfx",
-    "title": "PSFX Free",
+    "title": "PSFX - Peri's Sound Effects",
     "description": "Бесплатная библиотека звуковых эффектов для сцен и автоматизации.",
     "category": "Анимации и звук",
     "licenseType": "free",
@@ -1751,6 +1775,9 @@
           "metadataManifestUrl": null
         }
       }
+    ],
+    "aliases": [
+      "PSFX Free"
     ]
   },
   {
@@ -2211,5 +2238,193 @@
         }
       }
     ]
+  },
+  {
+    "id": "classic-facing",
+    "title": "Classic Facing",
+    "description": "Поворачивает токены по направлению движения и согласует скорость поворота с режимом перемещения. Версия автора поддерживает только Foundry VTT 14.",
+    "category": "Инструменты ведущего",
+    "licenseType": "free",
+    "license": {
+      "name": "Не указана автором",
+      "url": null
+    },
+    "projectUrl": "https://boosty.to/p4vl0/posts/75e5ee41-b7cb-4589-bef1-bfee168f996e",
+    "tracks": [
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "1.0.0",
+        "installManifestUrl": "https://raw.githubusercontent.com/p4vl0-dev/classic-facing/refs/heads/main/module.json",
+        "declaredManifestUrl": "https://raw.githubusercontent.com/p4vl0-dev/classic-facing/refs/heads/main/module.json",
+        "compatibility": {
+          "minimum": "14",
+          "verified": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "public-manifest",
+        "verifiedAt": "2026-10-22",
+        "verificationNotes": "Публичный манифест автора прочитан 22 октября 2026. Ссылка обновляемая; версия и зависимости могут измениться.",
+        "sources": {
+          "catalogUrl": "https://boosty.to/p4vl0/posts/75e5ee41-b7cb-4589-bef1-bfee168f996e",
+          "releaseUrl": null,
+          "manifestUrl": "https://raw.githubusercontent.com/p4vl0-dev/classic-facing/refs/heads/main/module.json",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "universal-hover-distance",
+    "title": "Universal Hover Distance",
+    "description": "Показывает расстояние до токена при наведении. Зажмите Alt с выбранным токеном, чтобы увидеть расстояния до всех остальных. Бесплатная альтернатива Hover Distance.",
+    "category": "Инструменты ведущего",
+    "licenseType": "free",
+    "license": {
+      "name": "Не указана автором",
+      "url": null
+    },
+    "projectUrl": "https://boosty.to/p4vl0/posts/93643628-94e0-494d-ae50-305fbd597089",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "2.0.0",
+        "installManifestUrl": "https://raw.githubusercontent.com/p4vl0-dev/universal-hover-distance/refs/heads/main/module.json",
+        "declaredManifestUrl": "https://raw.githubusercontent.com/p4vl0-dev/universal-hover-distance/refs/heads/main/module.json",
+        "compatibility": {
+          "minimum": "13",
+          "verified": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "public-manifest",
+        "verifiedAt": "2026-10-22",
+        "verificationNotes": "Публичный манифест автора прочитан 22 октября 2026. Ссылка обновляемая; версия и зависимости могут измениться.",
+        "sources": {
+          "catalogUrl": "https://boosty.to/p4vl0/posts/93643628-94e0-494d-ae50-305fbd597089",
+          "releaseUrl": null,
+          "manifestUrl": "https://raw.githubusercontent.com/p4vl0-dev/universal-hover-distance/refs/heads/main/module.json",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "2.0.0",
+        "installManifestUrl": "https://raw.githubusercontent.com/p4vl0-dev/universal-hover-distance/refs/heads/main/module.json",
+        "declaredManifestUrl": "https://raw.githubusercontent.com/p4vl0-dev/universal-hover-distance/refs/heads/main/module.json",
+        "compatibility": {
+          "minimum": "13",
+          "verified": "14"
+        },
+        "relationships": {
+          "systems": [],
+          "required": [],
+          "recommended": []
+        },
+        "verificationStatus": "public-manifest",
+        "verifiedAt": "2026-10-22",
+        "verificationNotes": "Публичный манифест автора прочитан 22 октября 2026. Ссылка обновляемая; версия и зависимости могут измениться.",
+        "sources": {
+          "catalogUrl": "https://boosty.to/p4vl0/posts/93643628-94e0-494d-ae50-305fbd597089",
+          "releaseUrl": null,
+          "manifestUrl": "https://raw.githubusercontent.com/p4vl0-dev/universal-hover-distance/refs/heads/main/module.json",
+          "metadataManifestUrl": null
+        }
+      }
+    ]
+  },
+  {
+    "id": "laaru-dnd5-hw",
+    "title": "🧙‍♂️🐲⚔️ Laaru•Compendium•DnD14",
+    "description": "Бесплатная демоверсия компендиума для D&D 2014: классы, заклинания, существа и предметы из официальных книг, без HB. Изображения загружаются извне. Автор указывает сбор технических данных и страны пользователя.",
+    "category": "Переводы и контент",
+    "licenseType": "free",
+    "license": {
+      "name": "Не указана автором",
+      "url": null
+    },
+    "projectUrl": "https://boosty.to/laaru/posts/e64d5ba7-da19-45ce-ad54-74c88f29d3b7",
+    "tracks": [
+      {
+        "foundryMajor": 13,
+        "moduleVersion": "1.7",
+        "installManifestUrl": "https://module.fvtt.club/s/bPY65x9APtm46q8/download",
+        "declaredManifestUrl": "https://module.fvtt.club/s/bPY65x9APtm46q8/download",
+        "compatibility": {
+          "minimum": "12",
+          "verified": "14",
+          "maximum": "14"
+        },
+        "relationships": {
+          "systems": [
+            "dnd5e"
+          ],
+          "required": [],
+          "recommended": [
+            "socketlib",
+            "lib-wrapper",
+            "dae"
+          ]
+        },
+        "verificationStatus": "public-manifest",
+        "verifiedAt": "2026-10-22",
+        "verificationNotes": "Публичный манифест автора прочитан 22 октября 2026. Ссылка обновляемая; версия и зависимости могут измениться.",
+        "sources": {
+          "catalogUrl": "https://boosty.to/laaru/posts/e64d5ba7-da19-45ce-ad54-74c88f29d3b7",
+          "releaseUrl": null,
+          "manifestUrl": "https://module.fvtt.club/s/bPY65x9APtm46q8/download",
+          "metadataManifestUrl": null
+        }
+      },
+      {
+        "foundryMajor": 14,
+        "moduleVersion": "1.7",
+        "installManifestUrl": "https://module.fvtt.club/s/bPY65x9APtm46q8/download",
+        "declaredManifestUrl": "https://module.fvtt.club/s/bPY65x9APtm46q8/download",
+        "compatibility": {
+          "minimum": "12",
+          "verified": "14",
+          "maximum": "14"
+        },
+        "relationships": {
+          "systems": [
+            "dnd5e"
+          ],
+          "required": [],
+          "recommended": [
+            "socketlib",
+            "lib-wrapper",
+            "dae"
+          ]
+        },
+        "verificationStatus": "public-manifest",
+        "verifiedAt": "2026-10-22",
+        "verificationNotes": "Публичный манифест автора прочитан 22 октября 2026. Ссылка обновляемая; версия и зависимости могут измениться.",
+        "sources": {
+          "catalogUrl": "https://boosty.to/laaru/posts/e64d5ba7-da19-45ce-ad54-74c88f29d3b7",
+          "releaseUrl": null,
+          "manifestUrl": "https://module.fvtt.club/s/bPY65x9APtm46q8/download",
+          "metadataManifestUrl": null
+        }
+      }
+    ],
+    "aliases": [
+      "Лаару",
+      "Laaru",
+      "компендиум",
+      "без хб"
+    ],
+    "edition": "Бесплатная демоверсия · без HB",
+    "paidEdition": {
+      "title": "🧙‍♂️🐲⚔️🍺 Laaru•Compendium•DnD14",
+      "url": "https://boosty.to/laaru",
+      "description": "Расширенная версия по подписке: больше контента, включая HB/UA. Установочную ссылку выдаёт автор. У демо и полной версии одинаковый ID: выберите одну редакцию."
+    }
   }
 ]

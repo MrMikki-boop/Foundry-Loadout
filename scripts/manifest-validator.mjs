@@ -5,6 +5,7 @@ export const LIMITS = Object.freeze({ timeoutPerHopMs: 8_000, maxRedirects: 3, m
 export const ACCEPTED_CONTENT_TYPES = new Set(["application/json", "text/json", "text/plain", "application/octet-stream"]);
 export const REDIRECT_HOSTS = new Set([
   "github.com", "raw.githubusercontent.com", "release-assets.githubusercontent.com", "objects.githubusercontent.com",
+  "module.fvtt.club",
   "gitlab.com", "release-assets.gitlab-static.net", "storage.googleapis.com",
 ]);
 
@@ -184,7 +185,7 @@ export function buildValidationPlan(catalog) {
       assertHttpsEvidenceUrl(sources.manifestUrl, "sources.manifestUrl", label);
       assertHttpsEvidenceUrl(sources.metadataManifestUrl, "sources.metadataManifestUrl", label);
 
-      if (track.verificationStatus === "verified") {
+      if (["verified", "public-manifest"].includes(track.verificationStatus)) {
         if (!track.installManifestUrl) fail("schema:verified-install-url", label);
         assertHttpsEvidenceUrl(track.installManifestUrl, "installManifestUrl", label);
         if (sources.manifestUrl !== track.installManifestUrl) fail("schema:verified-manifest-source", label);

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import catalog from "../data/modules.json" with { type: "json" };
-import { filterCatalog, statusPresentation } from "../data/catalog.mjs";
+import { filterCatalog, statusPresentation, installationPlan } from "../data/catalog.mjs";
 
 const baseFilters = {
   major: 14,
@@ -12,23 +12,12 @@ const baseFilters = {
   verifiedOnly: false,
 };
 
-const s08Ids = [
-  "simple-requests",
-  "monks-tokenbar",
-  "healthEstimate",
-  "token-action-hud-core",
-  "token-action-hud-dnd5e",
-  "combatbooster",
-  "hurry-up",
-  "disposition-initiative",
-  "quick-insert",
-];
-
-test("catalog has separate V13 and V14 tracks for every entry", () => {
+test("catalog has unique supported tracks for every entry", () => {
   assert.equal(new Set(catalog.map((entry) => entry.id)).size, catalog.length);
   for (const entry of catalog) {
-    assert.deepEqual(entry.tracks.map((track) => track.foundryMajor).sort(), [13, 14]);
-    assert.equal(new Set(entry.tracks.map((track) => track.foundryMajor)).size, 2);
+    assert.ok(entry.tracks.length > 0);
+    assert.ok(entry.tracks.every(track => [13, 14].includes(track.foundryMajor)));
+    assert.equal(new Set(entry.tracks.map((track) => track.foundryMajor)).size, entry.tracks.length);
   }
 });
 
@@ -43,35 +32,6 @@ test("verified install URLs are pinned HTTPS manifests", () => {
     assert.match(track.sources.catalogUrl, /^https:\/\/foundryvtt\.com\/packages\//);
     assert.match(track.sources.releaseUrl, /^https:\/\//);
     assert.match(track.sources.manifestUrl, /^https:\/\//);
-  }
-});
-
-test("S-08 adds nine unique cards with eighteen pinned verified tracks", () => {
-  const ids = catalog.map((entry) => entry.id);
-  assert.equal(new Set(ids).size, ids.length);
-
-  const entries = s08Ids.map((id) => {
-    const entry = catalog.find((candidate) => candidate.id === id);
-    assert.ok(entry, `missing S-08 entry ${id}`);
-    return entry;
-  });
-  assert.equal(entries.length, 9);
-
-  const tracks = entries.flatMap((entry) => {
-    assert.equal(entry.tracks.length, 2, `${entry.id} must have two tracks`);
-    assert.deepEqual(entry.tracks.map((track) => track.foundryMajor).sort(), [13, 14]);
-    return entry.tracks;
-  });
-  assert.equal(tracks.length, 18);
-
-  for (const track of tracks) {
-    assert.equal(track.verificationStatus, "verified");
-    assert.match(track.installManifestUrl, /^https:\/\//);
-    assert.doesNotMatch(track.installManifestUrl, /\/latest\//i);
-    assert.match(track.sources.catalogUrl, /^https:\/\/foundryvtt\.com\/packages\//);
-    assert.match(track.sources.releaseUrl, /^https:\/\//);
-    assert.match(track.sources.manifestUrl, /^https:\/\//);
-    assert.equal(track.sources.metadataManifestUrl, null);
   }
 });
 
@@ -145,8 +105,39 @@ test("filters combine query, category, license, system and status with AND", () 
   assert.deepEqual(verifiedPremium, []);
 });
 
-test("catalog contains no credentials or bulk-install model", () => {
+test("catalog contains no credentials", () => {
   const serialized = JSON.stringify(catalog);
   assert.doesNotMatch(serialized, /(?:[?&](?:token|key)=|password|api[_-]?key|secret=)/i);
-  assert.doesNotMatch(serialized, /bundle|cart|bulk|export/i);
+
+});
+
+
+test("installation plan resolves nested dependencies once, before dependents", () => {
+  for (const major of [13, 14]) {
+    const plan = installationPlan(["JB2A_DnD5e", "dnd5e-animations"], major);
+    assert.deepEqual(new Set(plan.map(item => item.id)), new Set(["JB2A_DnD5e", "sequencer", "socketlib", "autoanimations", "dnd5e-animations"]));
+    for (const [index, item] of plan.entries()) {
+      for (const dep of item.track.relationships.required) assert.ok(plan.findIndex(row => row.id === dep) < index);
+    }
+    assert.ok(plan.every(item => item.track.foundryMajor === major));
+  }
+  const entries = [{id: "a", tracks: [{foundryMajor: 13, relationships: {required: ["b", "missing"]}}]}, {id: "b", tracks: [{foundryMajor: 13, relationships: {required: ["a"]}}]}];
+  assert.deepEqual(installationPlan(["a", "b"], 13, entries).map(item => item.id), ["b", "missing", "a"]);
+  assert.equal(installationPlan(["missing"], 13, entries)[0].track, undefined);
+});
+
+test("system filtering includes universal modules", () => {
+  const result = filterCatalog(catalog, {...baseFilters, system: "dnd5e"});
+  assert.ok(result.some(({entry}) => entry.id === "JB2A_DnD5e"));
+  assert.ok(result.some(({entry}) => entry.id === "dnd5e-animations"));
+});
+
+
+test("new author modules retain compatibility and keep Laaru editions together", () => {
+  const facing = catalog.find(entry => entry.id === "classic-facing");
+  assert.deepEqual(facing.tracks.map(track => track.foundryMajor), [14]);
+  const laaru = catalog.find(entry => entry.id === "laaru-dnd5-hw");
+  assert.equal(laaru.licenseType, "free");
+  assert.equal(laaru.paidEdition.url, "https://boosty.to/laaru");
+  assert.ok(filterCatalog(catalog, {...baseFilters, query: "русификатор"}).some(({entry}) => entry.id === "ru-ru"));
 });

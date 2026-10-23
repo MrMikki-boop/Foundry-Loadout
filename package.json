@@ -9,7 +9,7 @@
     "dev": "vite --host 127.0.0.1 --port 3000",
     "build": "vite build --base=./ --outDir out",
     "validate:data": "node scripts/validate-manifests.mjs",
-    "test": "node --test tests/catalog.test.mjs tests/validator-security.test.mjs tests/site-source.test.mjs",
+    "test": "node --test tests/catalog.test.mjs tests/validator-security.test.mjs tests/loadout.test.mjs",
     "check": "npm test && npm run build && node --test tests/site-build.test.mjs"
   },
   "devDependencies": {

@@ -3,14 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0d1117" />
+    <meta name="theme-color" content="#1b1715" />
     <meta
       name="description"
-      content="Проверенные manifest-ссылки модулей для Foundry Virtual Tabletop 13 и 14."
+      content="Каталог модулей Foundry VTT 13 и 14 на русском: русификатор, анимации JB2A, модули D&D5e, бесплатные наборы и зависимости. Ссылки и инструкции по установке."
     />
+    <link rel="canonical" href="https://mrmikki-boop.github.io/Foundry-Loadout/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:title" content="Foundry Loadout — модули Foundry VTT на русском" />
+    <meta property="og:description" content="Русский перевод, анимации, инструменты ведущего и модули D&D5e. Готовые наборы с зависимостями и инструкциями по установке." />
+    <meta property="og:url" content="https://mrmikki-boop.github.io/Foundry-Loadout/" />
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./styles.css" />
-    <title>Foundry Loadout — manifest-ссылки для Foundry VTT</title>
+    <title>Модули Foundry VTT на русском — установка и наборы | Foundry Loadout</title>
   </head>
   <body>
     <a class="skip-link" href="#catalog">Перейти к каталогу</a>
@@ -27,13 +33,15 @@
 
     <main>
       <section class="intro" aria-labelledby="page-title">
-        <p class="eyebrow">Справочник manifest-ссылок</p>
-        <h1 id="page-title">Найдите модуль. Скопируйте manifest.</h1>
+        <p class="eyebrow">Модули Foundry VTT · на русском</p>
+        <h1 id="page-title">Меньше настройки.<br><span>Больше игры.</span></h1>
         <p class="intro-copy">
-          Выберите версию Foundry VTT. Каталог покажет совместимость, зависимости
-          и закреплённую ссылку для ручной установки.
+          Соберите Foundry VTT под свой стол: русский перевод, анимации и инструменты ведущего. Найдите нужный модуль
+          или начните с готового набора — с зависимостями и инструкцией по установке.
         </p>
       </section>
+
+      <section class="collections-section" aria-label="Готовые наборы"><div id="collections" class="collections"></div></section>
 
       <section class="catalog-shell" id="catalog" aria-labelledby="catalog-title">
         <form class="catalog-controls" id="catalog-controls" role="search">
@@ -51,19 +59,19 @@
             <legend>Версия Foundry VTT</legend>
             <div class="segmented-control">
               <label>
-                <input type="radio" name="foundry-major" value="13" />
+                <input type="radio" name="foundry-major" value="13" checked />
                 <span>V13</span>
               </label>
               <label>
-                <input type="radio" name="foundry-major" value="14" checked />
+                <input type="radio" name="foundry-major" value="14" />
                 <span>V14</span>
               </label>
             </div>
           </fieldset>
 
-          <details class="filter-panel">
+          <details class="filter-panel" open>
             <summary>
-              Дополнительные фильтры
+              Фильтры каталога
               <span class="filter-count" id="filter-count" hidden></span>
             </summary>
             <div class="filter-grid">
@@ -100,7 +108,7 @@
         <div class="results-heading">
           <div>
             <p class="eyebrow">Каталог</p>
-            <h2 id="catalog-title">Модули для Foundry VTT <span id="selected-major">14</span></h2>
+            <h2 id="catalog-title">Модули для Foundry VTT <span id="selected-major">13</span></h2>
           </div>
           <p class="result-count" id="result-count" aria-live="polite"></p>
         </div>
@@ -118,7 +126,7 @@
           </p>
         </div>
         <ol class="install-steps">
-          <li><span>1</span><p>Нажмите <strong>Копировать manifest</strong> у нужного модуля.</p></li>
+          <li><span>1</span><p>Нажмите <strong>Копировать ссылку</strong>. Если нужны зависимости, откройте <strong>Установить с зависимостями</strong>.</p></li>
           <li><span>2</span><p>Откройте Foundry VTT и перейдите в <strong>Дополнения → Установить модуль</strong>.</p></li>
           <li><span>3</span><p>Вставьте ссылку в поле <strong>Manifest URL</strong> и нажмите <strong>Установить</strong>.</p></li>
           <li><span>4</span><p>После загрузки включите модуль внутри нужного мира.</p></li>
@@ -133,8 +141,12 @@
       </p>
     </footer>
 
+    <dialog id="install-dialog" aria-labelledby="dialog-title">
+      <div class="dialog-heading"><div><p class="eyebrow">Установка в Foundry</p><h2 id="dialog-title"></h2></div><button id="close-install" class="secondary-button" type="button" aria-label="Закрыть окно установки">Закрыть ×</button></div>
+      <div id="installation-content"></div>
+    </dialog>
     <div class="visually-hidden" id="announcer" role="status" aria-live="polite" aria-atomic="true"></div>
-    <noscript>Для поиска, фильтров и копирования ссылок требуется JavaScript.</noscript>
+    <noscript>Каталог доступен без JavaScript. Ссылки установки находятся в разделе «Подробнее» у каждого модуля. Для поиска, фильтров и копирования кнопкой включите JavaScript.</noscript>
     <script type="module" src="./app.js"></script>
   </body>
 </html>

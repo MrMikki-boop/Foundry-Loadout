@@ -25,3 +25,13 @@ test("static artifact stays deliberately small", async () => {
   const sizes = await Promise.all(files.map(async (file) => (await stat(file)).size));
   assert.ok(sizes.reduce((sum, size) => sum + size, 0) < 300_000);
 });
+
+
+test("HTML contains readable catalog content and permanent module links without JavaScript", async () => {
+  const html = await readFile(new URL("index.html", outputRoot), "utf8");
+  const { catalog } = await import("../data/catalog.mjs");
+  for (const entry of catalog) assert.ok(html.includes(`id="module-${entry.id}"`));
+  assert.match(html, /rel="canonical"/);
+  assert.match(html, /#module-classic-facing/);
+  await stat(new URL("sitemap.xml", outputRoot));
+});
